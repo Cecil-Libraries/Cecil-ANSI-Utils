@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netframework4.7.2</TargetFramework>
+        <AssemblyName>Cecil ANSI Utils</AssemblyName>
+        <Description>A library of ANSI Utilities for the C# Console environment, mainly Color Modes [foreground and background], and Text Processing Modes, also includes RGB Conversions for ColorRGB</Description>
+        <Version>1.0.0</Version>
+        <Authors>Organization Cecil Libraries, Founder(s) Chaosyr</Authors>
+        <Company>Organization Cecil Libraries, Founder(s) Chaosyr</Company>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <LangVersion>Latest</LangVersion>
+        <RootNamespace>ANSI_Utils</RootNamespace>
+        <ApplicationIcon>CecilLibsLogo.ico</ApplicationIcon>
+    </PropertyGroup>
+
+    <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+        <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+    </ItemGroup>
+    
+    <PropertyGroup>
+        <PackageId>Cecil.ANSI_Utils</PackageId>
+        <PackageTags>ansi console terminal color formatting colorrgb color255 color256 rgbconversion consoleoutput consolefont</PackageTags>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <RepositoryUrl>https://github.com/Cecil-Libraries/Cecil-ANSI-Utils</RepositoryUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="LICENSE.md" Pack="true" PackagePath="/" />
+        <None Include="README.md" Pack="true" PackagePath="/" />
+    </ItemGroup>
+</Project>
