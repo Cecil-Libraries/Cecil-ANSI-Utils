@@ -10,34 +10,34 @@ This library is primarily for enabling the ability to utilize ANSI Color Codes o
 ## Library Documentation (Ansi Utils)
 This will probably be easier to navigate through in the GitHub's Wiki, however this will just be as in depth as the Wiki will be, so everything you need will be within this very file, the Code is also fully commented if you wish to jump straight into coding. If any explanations are weaker than other let us know so we can fix it up!
 ### The Color List's
-These list's stem I believe all the way back to Chaosyr's AP Computer Science Principles Project when they were making a Book Displayer Console App of sorts. 
+These list's stem I believe all the way back to Chaosyr's AP Computer Science Principles Project when they were making a Book Displayer Console App of sorts.
 
 First off the Most Useful tool for seeing how these work would be calling `Displayer.DisplayListBased()`, this will iterate through every Color List we have in this project in a really nice to look and understand at way. If you're too lazy to call it here's a few Screenshots.
 #### Regular
 Taken In Microsoft's Command Prompt
 
-![Screenshots/Screenshot-1.png](Screenshots/Screenshot-1.png)
+![Screenshots/Screenshot-1.png](https://raw.githubusercontent.com/Cecil-Libraries/Cecil-ANSI-Utils/refs/heads/main/Screenshots/Screenshot-1.png)
 
 Taken In Microsoft's Command Prompt
 
-![Screenshots/Screenshot-2.png](Screenshots/Screenshot-2.png)
+![Screenshots/Screenshot-2.png](https://raw.githubusercontent.com/Cecil-Libraries/Cecil-ANSI-Utils/refs/heads/main/Screenshots/Screenshot-2.png)
 
 Taken In Microsoft's Command Prompt
 
-![Screenshots/Screenshot-3.png](Screenshots/Screenshot-3.png)
+![Screenshots/Screenshot-3.png](https://raw.githubusercontent.com/Cecil-Libraries/Cecil-ANSI-Utils/refs/heads/main/Screenshots/Screenshot-3.png)
 #### High Intensity
 
 Taken In Microsoft's Command Prompt
 
-![Screenshots/Screenshot-4.png](Screenshots/Screenshot-4.png)
+![Screenshots/Screenshot-4.png](https://raw.githubusercontent.com/Cecil-Libraries/Cecil-ANSI-Utils/refs/heads/main/Screenshots/Screenshot-4.png)
 
 Taken In Microsoft's Command Prompt
 
-![Screenshots/Screenshot-5.png](Screenshots/Screenshot-5.png)
+![Screenshots/Screenshot-5.png](https://raw.githubusercontent.com/Cecil-Libraries/Cecil-ANSI-Utils/refs/heads/main/Screenshots/Screenshot-5.png)
 
 Taken In Microsoft's Command Prompt
 
-![Screenshots/Screenshot-6.png](Screenshots/Screenshot-6.png)
+![Screenshots/Screenshot-6.png](https://raw.githubusercontent.com/Cecil-Libraries/Cecil-ANSI-Utils/refs/heads/main/Screenshots/Screenshot-6.png)
 #### Calls
 Calling the Lists are pretty straightforward. But essentially call `ANSICodeLists` than apply a `.WhateverListThisIs` to the end of it, and to choose an Entry append a `[X]` to the end of it, the `X` being the Entry Number shown in the above screenshots. For example `ANSICodeLists.ColorList[4]` would be Blue on the Regular list, apologies for any weird namings, these Lists are Old, the names will likely be standardized in the future, though it's highly recommended to use the Color Objects instead as it's much easier to work with.
 ### GetColorFromType
@@ -96,6 +96,7 @@ This is a more refined system for doing basic stuff with ANSI Color Codes, it wa
 |  Background   |                                             A bool determining whether the Object classifies as a Background or not.                                              |
 | HighIntensity |                                         A bool determining whether the Object classifies as being High Intensity or not.                                          |
 |   BaseColor   |                      The Color as it was passed into the Constructor in Integer form before BG/HI was applied to the Int for the Escape Code                      |
+
 Now let's move onto the Constructors, these are pretty much the same but there is a few differences.
 #### Construction
 Since the Types and Colors can be both String and Int we need to define both luckily we already defined it in the GetColorFromType so let's take that and modify it to match the new setup.
@@ -146,11 +147,11 @@ There is a Displayer associated with this Object to show all possibilities, you 
 
 Taken in JetBrains Rider
 
-![Screenshots/Screenshot-5.png](Screenshots/Screenshot-7.png)
+![Screenshots/Screenshot-7.png](https://raw.githubusercontent.com/Cecil-Libraries/Cecil-ANSI-Utils/refs/heads/main/Screenshots/Screenshot-7.png)
 
 Taken In Microsoft's Command Prompt
 
-![Screenshots/Screenshot-6.png](Screenshots/Screenshot-8.png)
+![Screenshots/Screenshot-8.png](https://raw.githubusercontent.com/Cecil-Libraries/Cecil-ANSI-Utils/refs/heads/main/Screenshots/Screenshot-8.png)
 #### Calls
 So you may be wondering, well how do I utilize this Object within my own code? Here's an Example taken from the Tester used in Development of how you can use it, in fact two examples.
 ##### Example 1
@@ -170,7 +171,7 @@ public static void Test()
 ```
 Taken In Microsoft's Command Prompt
 
-![Screenshots/Screenshot-9.png](Screenshots/Screenshot-9.png)
+![Screenshots/Screenshot-9.png](https://raw.githubusercontent.com/Cecil-Libraries/Cecil-ANSI-Utils/refs/heads/main/Screenshots/Screenshot-9.png)
 
 So what is this doing? Well it's pretty straightforward, we are creating in this case 4 Color Objects [GetReset() did not exist yet], after creating these objects which are essentially Set Red with Highlight, Unset Highlight, Set Red, Unset Red, we test them by printing a line note how each Object in the printed line is followed by `.Format()` this is a required component so the ANSI Code actually prints and causes the format to change, note Legacy consoles will display the exact code instead, you can change this by enabling VirtualMachineProcessing at least on Windows.
 
@@ -191,7 +192,7 @@ public static void Test()
 ```
 Taken In Microsoft's Command Prompt
 
-![Screenshots/Screenshot-10.png](Screenshots/Screenshot-10.png)
+![Screenshots/Screenshot-10.png](https://raw.githubusercontent.com/Cecil-Libraries/Cecil-ANSI-Utils/refs/heads/main/Screenshots/Screenshot-10.png)
 
 You may have noticed this is nearly identical to Test 2, and that's intentional, in this case we are enabling highIntensity and the background booleans so we change the background color versus the foreground one, and so that the colors appear brighter. Again notice that `.Format()` is required to display the color change properly.
 
@@ -236,6 +237,7 @@ This is a more refined system for doing basic stuff with ANSI Color Codes, it wa
 |  Shade256  |                                                         This is the Shade of the Color256 being sent in.                                                          |
 |   Reset    |                                                A bool determining whether the Object classifies as a Reset or not,                                                |
 | Background |                                             A bool determining whether the Object classifies as a Background or not.                                              |
+
 Now let's move onto the Constructors, these are pretty much the same but there's a few differences.
 #### Construction
 Since the Types can be both String and Int we need to define both luckily we already defined it in the GetColorFromType so let's take that and modify it to match the new setup.
@@ -289,7 +291,7 @@ public static void Test()
 ```
 Taken in Microsoft Command Prompt
 
-![Screenshots/Screenshot-11.png](Screenshots/Screenshot-11.png)
+![Screenshots/Screenshot-11.png](https://raw.githubusercontent.com/Cecil-Libraries/Cecil-ANSI-Utils/refs/heads/main/Screenshots/Screenshot-11.png)
 
 How this works? It creates four Color256 Objects, two Setters, two Unsetters. Then prints a line that does the following; Sets the Color, says something, sets a highlight, says something, unsets the highlight, says something, unsets the color, says something.
 ##### Example 2
@@ -320,7 +322,7 @@ Console.ReadLine();
 ```
 Taken In JetBrains Rider
 
-![Screenshots/Screenshot-12.png](Screenshots/Screenshot-12.png)
+![Screenshots/Screenshot-12.png](https://raw.githubusercontent.com/Cecil-Libraries/Cecil-ANSI-Utils/refs/heads/main/Screenshots/Screenshot-12.png)
 
 This was explained better in the Color Object, but here's what this does, iterates over every possible color the object can use, creates a Color256 for the BaseColor, creates a line in which sets that color and states the current Entry Number, iterates over all possible types, creates a Color256 for the Type, appends it to the printed line in the form of a Set, Say, Unset, once it's done iterating the types it prints the line, and appends an unset for the iterated color, every 15 goes it pauses to let the user read the entries and see what each are. Then, follows suit with the normal Press Enter To Proceed so that the app doesn't just close out once all entries are gone through.
 ### ColorRGB
@@ -338,6 +340,7 @@ Let's start by covering the Getters and Setters of the Object
 |    Blue    |                                                           This is the Blue value of the RGB passed in.                                                            |
 |   Reset    |                                                A bool determining whether the Object classifies as a Reset or not,                                                |
 | Background |                                             A bool determining whether the Object classifies as a Background or not.                                              |
+
 With that out of the way lets delve into the Constructors in which are provided.
 #### Constructors
 The below table is associated with the first variable of the constructor; the Types e.g. the Text Processing Modes in which are provided for ANSI.
@@ -392,7 +395,7 @@ public static void Test()
 
 Taken in JetBrains Rider
 
-![Screenshots/Screenshot-13.png](Screenshots/Screenshot-13.png)
+![Screenshots/Screenshot-13.png](https://raw.githubusercontent.com/Cecil-Libraries/Cecil-ANSI-Utils/refs/heads/main/Screenshots/Screenshot-13.png)
 
 Within this example, again we make 4 Color Objects this time ColorRGB, 2 sets, 2 unsets, all associated with `RGB(64, 56, 56)`. After we set these up we print a testing message in the vein of; Turn color on for the background, Turn Highlight on, turn Highlight off, turn color off for the background. Note once more that the `.Format()` is required for it to print properly.
 ##### Example 2
@@ -425,7 +428,7 @@ Console.ReadLine();
 ```
 Taken in Microsoft Command Prompt
 
-![Screenshots/Screenshot-14.png](Screenshots/Screenshot-14.png)
+![Screenshots/Screenshot-14.png](https://raw.githubusercontent.com/Cecil-Libraries/Cecil-ANSI-Utils/refs/heads/main/Screenshots/Screenshot-14.png)
 
 So what this does is essentially starts a loop through all 256 shads of red, followed by all 256 shades of green, followed by all 256 shades of blue. Once we are in the Blue loop we set up the iterator color, filling in a `0` for Normal color, and the r, g, and b iteration values. Afterwards we start the print line of Color On, Entry R G B. Than we loop through all possible types, and create a typed color in that loop. With that typed color we add to the printing line essentially Turn Type On, Print Type, Turn Type Off and Space, this repeats until we reach the end of the code block for the loop. Once we exit the type loop we add Color Off and print the line. This one doesn't have a pause, frankly because I couldn't get it working, which is why I do not recommend it. However, it's beautiful to watch.
 ### RGB Conversions
@@ -451,7 +454,7 @@ public static void Test()
 ```
 Taken in JetBrains Rider
 
-![Screenshots/Screenshot-15.png](Screenshots/Screenshot-15.png)
+![Screenshots/Screenshot-15.png](https://raw.githubusercontent.com/Cecil-Libraries/Cecil-ANSI-Utils/refs/heads/main/Screenshots/Screenshot-15.png)
 
 So here's what this piece of code is doing, First it gets the RGB pair from the Hex Conversion of "#aa55cb". Then it takes that color and makes two ColorRGB's from it, setting the mode to Regular (e.g. normal color), followed by the returned R G B from the hex conversion, one a reset one a set. Lastly it prints a line attempting to see if the color converted properly with a `Format()` for turning the Hex on and off, and feeds back the results it got from the math it did. And that's pretty much all there is to it!!
 #### FromGrayscale(int Gray)
@@ -475,7 +478,7 @@ public static void Test()
 ```
 Taken in JetBrains Rider
 
-![Screenshots/Screenshot-16.png](Screenshots/Screenshot-16.png)
+![Screenshots/Screenshot-16.png](https://raw.githubusercontent.com/Cecil-Libraries/Cecil-ANSI-Utils/refs/heads/main/Screenshots/Screenshot-16.png)
 
 Code wise this does the same thing as the HEX conversion, however it is a grayscale instead, and yes the Resultants should be the same number ats the input three times.
 #### FromHueShadeValue(int hue, int shade, int value)
@@ -486,11 +489,11 @@ This one's probably one of the trickier ones to explain on a coding frontier plu
 4. Gets the Missing value by doing the Value value retrieved in step 1 subtracted by the Difference.
 5. Next it determines a Quadrant in which the HSV color falls into and calls `BackToRGB()` for the associated combination.
 6. in `BackToRGB()` it takes the floats passed in  and does the following to the RGB values.
-   1. Gets the Maximum comparatively between the Value to 0f.
-   2. Gets the Minimum comparatively to that Maximum to 1f.
-   3. Multiplies that minimum by 255.
-   4. Rounds the Product of the multiplication.
-   5. Casts the rounding into an Integer.
+    1. Gets the Maximum comparatively between the Value to 0f.
+    2. Gets the Minimum comparatively to that Maximum to 1f.
+    3. Multiplies that minimum by 255.
+    4. Rounds the Product of the multiplication.
+    5. Casts the rounding into an Integer.
 7. In the case it fails to land a Quadrant it returns a 0,0,0 otherwise it returns the result from Step 6.
 
 Now here's an example of how you can use it without needing to know all of that Math!
@@ -511,7 +514,7 @@ public static void Test()
 ```
 Taken in JetBrains Rider
 
-![Screenshots/Screenshot-17.png](Screenshots/Screenshot-17.png)
+![Screenshots/Screenshot-17.png](https://raw.githubusercontent.com/Cecil-Libraries/Cecil-ANSI-Utils/refs/heads/main/Screenshots/Screenshot-17.png)
 
 Again similar to the last two code wise except this time it converts from an HSV pair to an RGB. Also, the R and B value are off by 2 digits from the math not sure as to where it stems but yeah ^^
 #### FromHueSaturationLightness(int hue, int saturation, int lightness)
@@ -547,7 +550,7 @@ public static void Test()
 ```
 Taken in JetBrains Rider
 
-![Screenshots/Screenshot-18.png](Screenshots/Screenshot-18.png)
+![Screenshots/Screenshot-18.png](https://raw.githubusercontent.com/Cecil-Libraries/Cecil-ANSI-Utils/refs/heads/main/Screenshots/Screenshot-18.png)
 
 Again pretty much identical to the prior examples just this time it utilizes HSL instead, this one is off by 1 in the R and B and 2 in the G, again not sure where the rounding errors stem from.
 ## Credits;
