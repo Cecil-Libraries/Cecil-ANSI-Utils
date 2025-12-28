@@ -284,8 +284,6 @@ This function essentially says, so this is our current object, lets take that an
 This function does similar to GetTypeVariant() however, it affects the set color instead.
 #### ToggleBackground() 1.1.0+
 This function just switches the State of the Foreground to Background and vice versa for the Object given.
-#### ToggleHighIntensity() 1.1.0+
-This function just switches the State of the HighIntensity to LowIntensity and vice versa for the Object given.
 #### Displayer
 There is a Displayer associated with this Object to show all possibilities, you can call it via `Displayer.DisplayColor256()`, it'll look similar to the one outlined in the Color Object, also because there's a ton of them, there won't be screenshots so, I encourage you run it yourself!!! And yeah it has the same display issues that were mentioned on the Color Object (would be really cool if they were fixed if your listening Microsoft, and if you brought back Blinking)
 #### Calls
@@ -393,8 +391,6 @@ This function essentially says, so this is our current object, lets take that an
 This function does similar to GetTypeVariant() however, it affects the set color instead.
 #### ToggleBackground() 1.1.0+
 This function just switches the State of the Foreground to Background and vice versa for the Object given.
-#### ToggleHighIntensity() 1.1.0+
-This function just switches the State of the HighIntensity to LowIntensity and vice versa for the Object given.
 #### Displayer
 So while we do have a Displayer with `Displayer.DisplayColorRGB()`, it will take an hour or so to complete so, I would advise instead opening an Art Program or similar and using the Color Picker to choose a color. Plus it also doesn't have a functional [had a pause but, it only worked in one iteration of green so removed it] pausing system.
 
