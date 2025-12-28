@@ -330,5 +330,148 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 			}
 			return $"Failed to get a Valid Type please verify {Type}, if its valid contact @thincreator3483 on discord.";
 		}
+		
+		/// <summary>
+		/// Get's the Color256 Object with the passed in Type rather than the Original Type.
+		/// </summary>
+		/// <param name="type">The type string in which the Object should be set to.
+		///		If by number, follow the order given in the table starting with 0, it's a 0-9 value.
+		///     <list type="table">
+		///         <listheader>
+		///             <term>Type</term>
+		///             <description>What It Does</description>
+		///             <term2>What To Enter</term2>
+		///         </listheader>
+		///         <item>
+		///             <term>Regular</term>
+		///             <description>This is essentially just the mundane colors.</description>
+		///         </item>
+		///         <item>
+		///             <term>Bold</term>
+		///             <description>This will make the text and color bold and more prominent.</description>
+		///         </item>
+		///         <item>
+		///             <term>Dulled</term>
+		///             <description>The opposite of Bold, it will make the text and color dark and less prominent.</description>
+		///         </item>
+		///         <item>
+		///             <term>Italic</term>
+		///             <description>This will make the text along with the color Italic.</description>
+		///         </item>
+		///         <item>
+		///             <term>Underlined</term>
+		///             <description>This will make the text along with the color Underlined.</description>
+		///         </item>
+		///         <item>
+		///             <term>Blink</term>
+		///             <description>This will make the text along with the color Blink on and off.</description>
+		///         </item>
+		///         <item>
+		///             <term>Rapid</term>
+		///             <description>This will make the text along with the color Rapidly Blink on and off.</description>
+		///         </item>
+		///         <item>
+		///             <term>Highlight</term>
+		///             <description>This will make the text the shade given and the background behind it the inverse of the shade specified.</description>
+		///         </item>
+		///         <item>
+		///             <term>Underlight</term>
+		///             <description>This will make the text invisible along with the color.</description>
+		///         </item>
+		///         <item>
+		///             <term>Strikethrough</term>
+		///             <description>This will make the text look like it has a line going through it.</description>
+		///         </item>
+		///     </list>
+		/// </param>
+		/// <returns>The Color object with the given type passed in rather than the original type.</returns>
+		/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+		public Color256 GetTypeVariant(string type) 
+		{
+			Color256 color = new Color256(type, Shade256, Background, Reset);
+			return color;
+		}
+		
+		/// <summary>
+		/// Get's the Color256 Object with the passed in Type rather than the Original Type.
+		/// </summary>
+		/// <param name="type">The type int in which the Object should be set to.
+		///		If by number, follow the order given in the table starting with 0, it's a 0-9 value.
+		///     <list type="table">
+		///         <listheader>
+		///             <term>Type</term>
+		///             <description>What It Does</description>
+		///             <term2>What To Enter</term2>
+		///         </listheader>
+		///         <item>
+		///             <term>Regular</term>
+		///             <description>This is essentially just the mundane colors.</description>
+		///         </item>
+		///         <item>
+		///             <term>Bold</term>
+		///             <description>This will make the text and color bold and more prominent.</description>
+		///         </item>
+		///         <item>
+		///             <term>Dulled</term>
+		///             <description>The opposite of Bold, it will make the text and color dark and less prominent.</description>
+		///         </item>
+		///         <item>
+		///             <term>Italic</term>
+		///             <description>This will make the text along with the color Italic.</description>
+		///         </item>
+		///         <item>
+		///             <term>Underlined</term>
+		///             <description>This will make the text along with the color Underlined.</description>
+		///         </item>
+		///         <item>
+		///             <term>Blink</term>
+		///             <description>This will make the text along with the color Blink on and off.</description>
+		///         </item>
+		///         <item>
+		///             <term>Rapid</term>
+		///             <description>This will make the text along with the color Rapidly Blink on and off.</description>
+		///         </item>
+		///         <item>
+		///             <term>Highlight</term>
+		///             <description>This will make the text the shade given and the background behind it the inverse of the shade specified.</description>
+		///         </item>
+		///         <item>
+		///             <term>Underlight</term>
+		///             <description>This will make the text invisible along with the color.</description>
+		///         </item>
+		///         <item>
+		///             <term>Strikethrough</term>
+		///             <description>This will make the text look like it has a line going through it.</description>
+		///         </item>
+		///     </list>
+		/// </param>
+		/// <returns>The Color object with the given type passed in rather than the original type.</returns>
+		/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+		public Color256 GetTypeVariant(int type) 
+		{
+			Color256 color = new Color256(type, Shade256, Background, Reset);
+			return color;
+		}
+		
+		/// <summary>
+		/// Get's the Color256 Object with its BaseColor switched out for a different one.
+		/// </summary>
+		/// <param name="shade">The Color in which you want to switch in</param>
+		/// <returns>The Color Object with the Given color switched in.</returns>
+		/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+		public Color256 GetColorVariant(int shade)
+		{
+			Color256 color = new Color256(Type, shade, Background, Reset);
+			return color;
+		}
+		
+		/// <summary>
+		/// A function to toggle the Background/Foreground switch from its previous state.
+		/// </summary>
+		/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+		public void ToggleBackground()
+		{
+			Background = !Background;
+		}
 	}
 }

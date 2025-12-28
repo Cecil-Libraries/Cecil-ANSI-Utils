@@ -142,6 +142,14 @@ This function pretty much just says, hey this is our current object, lets just p
 This function pretty much just says oh, we have this Type, and we had a String switch already to make it an integer, lets reverse the integers last digit back to the original string and send that back. This has little to no use case off the top of my head and is mainly utilized for the Displayer associated with the Color object.
 #### Format()
 This function is vital to displaying the Code onto the screen so it takes affect. What this does well, in laymen's terms it formats the Variables in the Object into a Proper ANSI Escape Code for Colors. Though it's a bit more complex, and I'd recommend checking out the code to see the full of what it does! Same for the Constructors if you have not!
+#### GetTypeVariant(string/int type) 1.1.0+
+This function essentially says, so this is our current object, lets take that and give it the type your after.
+#### GetColorVariant(string/int color) 1.1.0+
+This function does similar to GetTypeVariant() however, it affects the set color instead.
+#### ToggleBackground() 1.1.0+
+This function just switches the State of the Foreground to Background and vice versa for the Object given.
+#### ToggleHighIntensity() 1.1.0+
+This function just switches the State of the HighIntensity to LowIntensity and vice versa for the Object given.
 #### Displayer
 There is a Displayer associated with this Object to show all possibilities, you can call it via `Displayer.DisplayColor()`, this one I'd run yourself sense almost every console displays it differently for some reason The first screenshot is taken with JetBrains Rider, and the latter is taken with Microsoft's built-in Windows 11 Terminal. I show both rather than just Rider because Microsoft's Terminal actually handles the Underlight correctly (*claps*), however at the same time for some reason when Dulled Italic and Underlined are next to each other it decides to underline all 3 of them?!?! In fact double underline applied for Dulled and Italic, each mode is reset after usage for record so that shouldn't even be possible. But that's asides the point XD
 
@@ -270,6 +278,14 @@ This function pretty much just says, hey this is our current object, lets just p
 This function pretty much just says oh, we have this Type, and we had a String switch already to make it an integer, lets reverse the integers last digit back to the original string and send that back. This has little to no use case off the top of my head and is mainly utilized for the Displayer associated with the Color object.
 #### Format()
 This function is vital to displaying the Code onto the screen so it takes affect. What this does well, in laymen's terms it formats the Variables in the Object into a Proper ANSI Escape Code for Colors. Though it's a bit more complex, and I'd recommend checking out the code to see the full of what it does! Same for the Constructors if you have not!
+#### GetTypeVariant(string/int type) 1.1.0+
+This function essentially says, so this is our current object, lets take that and give it the type your after.
+#### GetColorVariant(int color) 1.1.0+
+This function does similar to GetTypeVariant() however, it affects the set color instead.
+#### ToggleBackground() 1.1.0+
+This function just switches the State of the Foreground to Background and vice versa for the Object given.
+#### ToggleHighIntensity() 1.1.0+
+This function just switches the State of the HighIntensity to LowIntensity and vice versa for the Object given.
 #### Displayer
 There is a Displayer associated with this Object to show all possibilities, you can call it via `Displayer.DisplayColor256()`, it'll look similar to the one outlined in the Color Object, also because there's a ton of them, there won't be screenshots so, I encourage you run it yourself!!! And yeah it has the same display issues that were mentioned on the Color Object (would be really cool if they were fixed if your listening Microsoft, and if you brought back Blinking)
 #### Calls
@@ -371,6 +387,14 @@ This function pretty much just says, hey this is our current object, lets just p
 This function pretty much just says oh, we have this Type, and we had a String switch already to make it an integer, lets reverse the integers last digit back to the original string and send that back. This has little to no use case off the top of my head and is mainly utilized for the Displayer associated with the Color object.
 #### Format()
 This function is vital to displaying the Code onto the screen so it takes affect. What this does well, in laymen's terms it formats the Variables in the Object into a Proper ANSI Escape Code for Colors. Though it's a bit more complex, and I'd recommend checking out the code to see the full of what it does! Same for the Constructors if you have not!
+#### GetTypeVariant(string/int type) 1.1.0+
+This function essentially says, so this is our current object, lets take that and give it the type your after.
+#### GetColorVariant(int red, int green, int blue/Tupple(int red, int green, int blue)) 1.1.0+
+This function does similar to GetTypeVariant() however, it affects the set color instead.
+#### ToggleBackground() 1.1.0+
+This function just switches the State of the Foreground to Background and vice versa for the Object given.
+#### ToggleHighIntensity() 1.1.0+
+This function just switches the State of the HighIntensity to LowIntensity and vice versa for the Object given.
 #### Displayer
 So while we do have a Displayer with `Displayer.DisplayColorRGB()`, it will take an hour or so to complete so, I would advise instead opening an Art Program or similar and using the Color Picker to choose a color. Plus it also doesn't have a functional [had a pause but, it only worked in one iteration of green so removed it] pausing system.
 
@@ -432,7 +456,7 @@ Taken in Microsoft Command Prompt
 
 So what this does is essentially starts a loop through all 256 shads of red, followed by all 256 shades of green, followed by all 256 shades of blue. Once we are in the Blue loop we set up the iterator color, filling in a `0` for Normal color, and the r, g, and b iteration values. Afterwards we start the print line of Color On, Entry R G B. Than we loop through all possible types, and create a typed color in that loop. With that typed color we add to the printing line essentially Turn Type On, Print Type, Turn Type Off and Space, this repeats until we reach the end of the code block for the loop. Once we exit the type loop we add Color Off and print the line. This one doesn't have a pause, frankly because I couldn't get it working, which is why I do not recommend it. However, it's beautiful to watch.
 ### RGB Conversions
-Now let's dig into the RGB Convertors and how to use them.
+Now let's dig into the RGB Convertors and how to use them. As of 1.1.0 you can now pass the output tupples directly into the ColorRGB Object.
 #### FromHex(string Code)
 For this one you simply need to pass in either something like "#ffffff" or "ffffff", because hex is base 16 it must be a string. How it works internally is trimming the start of the code of `#`'s, than converting each split of 2 characters in the code from base 16 into base 10, than returns the RGB values that were outputted.
 

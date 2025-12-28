@@ -3,7 +3,7 @@
         <TargetFramework>netframework4.7.2</TargetFramework>
         <AssemblyName>Cecil ANSI Utils</AssemblyName>
         <Description>A library of ANSI Utilities for the C# Console environment, mainly Color Modes [foreground and background], and Text Processing Modes, also includes RGB Conversions for ColorRGB</Description>
-        <Version>1.0.1</Version>
+        <Version>1.1.0</Version>
         <Authors>Organization Cecil Libraries, Founder(s) Chaosyr</Authors>
         <Company>Organization Cecil Libraries, Founder(s) Chaosyr</Company>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -25,7 +25,12 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
         <PackageIcon>icon.png</PackageIcon>
-        <PackageReleaseNotes>Ugh, this update doesn't change anything just enables the icon and the license agreement that should've been there already.</PackageReleaseNotes>
+        <PackageReleaseNotes>
+            * Added GetTypeVariant(), docs will have a updated section for it, but what it does is when a Color Object is present you can cast `GetTypeVariant(string\int)` and get the Object set to that Mode with the same Color. 
+            * Similarly we also added `GetColorVariant` which works similarly but with the color, we reccomend not using both systems with a singular object it will get messy quick.
+            * Added `ToggleBackground()` and `ToggleHighIntensity()` these will toggle the state of the given boolean on the Object itself.
+            * RGB Tupples in the RGB Object related RGB sections, this was done for ease of Use with the RGB Conversions.
+        </PackageReleaseNotes>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     </PropertyGroup>
 

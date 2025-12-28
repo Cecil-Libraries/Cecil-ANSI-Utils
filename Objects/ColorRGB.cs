@@ -290,6 +290,243 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 			Blue = blue;
 			Reset = reset;
 		}
+		
+		/// <summary>
+		/// Constructs a ColorRGB from a passed RGB and a Type, along with overloads for more options.
+		/// </summary>
+		/// <param name="rgbPair">
+		/// The Tupple from the Resultant of a RGB Conversion for Ease of Use.
+		/// </param>
+		/// <param name="type">
+		///		If by number, follow the order given in the table starting with 0, it's a 0-9 value.
+		///     <list type="table">
+		///         <listheader>
+		///             <term>Type</term>
+		///             <description>What It Does</description>
+		///             <term2>What To Enter</term2>
+		///         </listheader>
+		///         <item>
+		///             <term>Regular</term>
+		///             <description>This is essentially just the mundane colors.</description>
+		///         </item>
+		///         <item>
+		///             <term>Bold</term>
+		///             <description>This will make the text and color bold and more prominent.</description>
+		///         </item>
+		///         <item>
+		///             <term>Dulled</term>
+		///             <description>The opposite of Bold, it will make the text and color dark and less prominent.</description>
+		///         </item>
+		///         <item>
+		///             <term>Italic</term>
+		///             <description>This will make the text along with the color Italic.</description>
+		///         </item>
+		///         <item>
+		///             <term>Underlined</term>
+		///             <description>This will make the text along with the color Underlined.</description>
+		///         </item>
+		///         <item>
+		///             <term>Blink</term>
+		///             <description>This will make the text along with the color Blink on and off.</description>
+		///         </item>
+		///         <item>
+		///             <term>Rapid</term>
+		///             <description>This will make the text along with the color Rapidly Blink on and off.</description>
+		///         </item>
+		///         <item>
+		///             <term>Highlight</term>
+		///             <description>This will make the text the shade given and the background behind it the inverse of the shade specified.</description>
+		///         </item>
+		///         <item>
+		///             <term>Underlight</term>
+		///             <description>This will make the text invisible along with the color.</description>
+		///         </item>
+		///         <item>
+		///             <term>Strikethrough</term>
+		///             <description>This will make the text look like it has a line going through it.</description>
+		///         </item>
+		///     </list>
+		/// </param>
+		/// <param name="background">Whether the applicant color should be applied to the background or foreground, defaults to foreground.</param>
+		/// <param name="reset">Whether the applicant color should be a reset or not, defaults to not.</param>
+		/// <returns>A object representing the given color.</returns>
+		/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+		public ColorRGB(string type, (int red, int green, int blue) rgbPair, bool background = false, bool reset = false)
+		{
+			Background = background;
+			
+			int digitStart = 0;
+			
+			if (background)
+				digitStart = 4;
+			else if (!background)
+				digitStart = 3;
+			
+			if (reset)
+			{
+				switch (type)
+				{
+					case "Regular":
+						Type = 0;
+						break;
+					case "Bold":
+						Type = int.Parse("2" + 1.ToString());
+						break;
+					case "Dulled":
+						Type = int.Parse("2" + 2.ToString());
+						break;
+					case "Italic":
+						Type = int.Parse("2" + 3.ToString());
+						break;
+					case "Underlined":
+						Type = int.Parse("2" + 4.ToString());
+						break;
+					case "Blink":
+						Type = int.Parse("2" + 5.ToString());
+						break;
+					case "Rapid":
+						Type = int.Parse("2" + 6.ToString());
+						break;
+					case "Highlight":
+						Type = int.Parse("2" + 7.ToString());
+						break;
+					case "Underlight":
+						Type = int.Parse("2" + 8.ToString());
+						break;
+					case "Strikethrough":
+						Type = int.Parse("2" + 9.ToString());
+						break;
+				}
+			} else if (!reset)
+			{
+				switch (type)
+				{
+					case "Regular":
+						Type = 0;
+						break;
+					case "Bold":
+						Type = 1;
+						break;
+					case "Dulled":
+						Type = 2;
+						break;
+					case "Italic":
+						Type = 3;
+						break;
+					case "Underlined":
+						Type = 4;
+						break;
+					case "Blink":
+						Type = 5;
+						break;
+					case "Rapid":
+						Type = 6;
+						break;
+					case "Highlight":
+						Type = 7;
+						break;
+					case "Underlight":
+						Type = 8;
+						break;
+					case "Strikethrough":
+						Type = 9;
+						break;
+				}
+			}
+			
+			BasicShade = int.Parse(digitStart.ToString() + "8");
+			Red = rgbPair.red;
+			Green = rgbPair.green;
+			Blue = rgbPair.blue;
+			Reset = reset;
+		}
+		
+		/// <summary>
+		/// Constructs a ColorRGB from a passed RGB and a Type, along with overloads for more options.
+		/// </summary>
+		/// <param name="rgbPair">
+		/// The Tupple from the Resultant of a RGB Conversion for Ease of Use.
+		/// </param>
+		/// <param name="type">
+		///		If by number, follow the order given in the table starting with 0, it's a 0-9 value.
+		///     <list type="table">
+		///         <listheader>
+		///             <term>Type</term>
+		///             <description>What It Does</description>
+		///             <term2>What To Enter</term2>
+		///         </listheader>
+		///         <item>
+		///             <term>Regular</term>
+		///             <description>This is essentially just the mundane colors.</description>
+		///         </item>
+		///         <item>
+		///             <term>Bold</term>
+		///             <description>This will make the text and color bold and more prominent.</description>
+		///         </item>
+		///         <item>
+		///             <term>Dulled</term>
+		///             <description>The opposite of Bold, it will make the text and color dark and less prominent.</description>
+		///         </item>
+		///         <item>
+		///             <term>Italic</term>
+		///             <description>This will make the text along with the color Italic.</description>
+		///         </item>
+		///         <item>
+		///             <term>Underlined</term>
+		///             <description>This will make the text along with the color Underlined.</description>
+		///         </item>
+		///         <item>
+		///             <term>Blink</term>
+		///             <description>This will make the text along with the color Blink on and off.</description>
+		///         </item>
+		///         <item>
+		///             <term>Rapid</term>
+		///             <description>This will make the text along with the color Rapidly Blink on and off.</description>
+		///         </item>
+		///         <item>
+		///             <term>Highlight</term>
+		///             <description>This will make the text the shade given and the background behind it the inverse of the shade specified.</description>
+		///         </item>
+		///         <item>
+		///             <term>Underlight</term>
+		///             <description>This will make the text invisible along with the color.</description>
+		///         </item>
+		///         <item>
+		///             <term>Strikethrough</term>
+		///             <description>This will make the text look like it has a line going through it.</description>
+		///         </item>
+		///     </list>
+		/// </param>
+		/// <param name="background">Whether the applicant color should be applied to the background or foreground, defaults to foreground.</param>
+		/// <param name="reset">Whether the applicant color should be a reset or not, defaults to not.</param>
+		/// <returns>A object representing the given color.</returns>
+		/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+		public ColorRGB(int type, (int red, int green, int blue) rgbPair, bool background = false, bool reset = false)
+		{
+			Background = background;
+			
+			int digitStart = 0;
+			
+			if (background)
+				digitStart = 4;
+			else if (!background)
+				digitStart = 3;
+			
+			if (reset)
+			{
+				if (type != 0)
+					Type = int.Parse("2" + type.ToString());
+			} else if (!reset)
+			{
+				Type = type;
+			}
+			
+			BasicShade = int.Parse(digitStart.ToString() + "8");
+			Red = rgbPair.red;
+			Green = rgbPair.green;
+			Blue = rgbPair.blue;
+			Reset = reset;
+		}
 
 		/// <summary>
 		/// This is a function that basically just formats the Color into a string.
@@ -353,6 +590,163 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 					return "Strikethrough";
 			}
 			return $"Failed to get a Valid Type please verify {Type}, if its valid contact @thincreator3483 on discord.";
+		}
+		
+		/// <summary>
+		/// Get's the ColorRGB Object with the passed in Type rather than the Original Type.
+		/// </summary>
+		/// <param name="type">The type string in which the Object should be set to.
+		///		If by number, follow the order given in the table starting with 0, it's a 0-9 value.
+		///     <list type="table">
+		///         <listheader>
+		///             <term>Type</term>
+		///             <description>What It Does</description>
+		///             <term2>What To Enter</term2>
+		///         </listheader>
+		///         <item>
+		///             <term>Regular</term>
+		///             <description>This is essentially just the mundane colors.</description>
+		///         </item>
+		///         <item>
+		///             <term>Bold</term>
+		///             <description>This will make the text and color bold and more prominent.</description>
+		///         </item>
+		///         <item>
+		///             <term>Dulled</term>
+		///             <description>The opposite of Bold, it will make the text and color dark and less prominent.</description>
+		///         </item>
+		///         <item>
+		///             <term>Italic</term>
+		///             <description>This will make the text along with the color Italic.</description>
+		///         </item>
+		///         <item>
+		///             <term>Underlined</term>
+		///             <description>This will make the text along with the color Underlined.</description>
+		///         </item>
+		///         <item>
+		///             <term>Blink</term>
+		///             <description>This will make the text along with the color Blink on and off.</description>
+		///         </item>
+		///         <item>
+		///             <term>Rapid</term>
+		///             <description>This will make the text along with the color Rapidly Blink on and off.</description>
+		///         </item>
+		///         <item>
+		///             <term>Highlight</term>
+		///             <description>This will make the text the shade given and the background behind it the inverse of the shade specified.</description>
+		///         </item>
+		///         <item>
+		///             <term>Underlight</term>
+		///             <description>This will make the text invisible along with the color.</description>
+		///         </item>
+		///         <item>
+		///             <term>Strikethrough</term>
+		///             <description>This will make the text look like it has a line going through it.</description>
+		///         </item>
+		///     </list>
+		/// </param>
+		/// <returns>The Color object with the given type passed in rather than the original type.</returns>
+		/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+		public ColorRGB GetTypeVariant(string type) 
+		{
+			ColorRGB color = new ColorRGB(type, Red, Green, Blue, Background, Reset);
+			return color;
+		}
+		
+		/// <summary>
+		/// Get's the ColorRGB Object with the passed in Type rather than the Original Type.
+		/// </summary>
+		/// <param name="type">The type int in which the Object should be set to.
+		///		If by number, follow the order given in the table starting with 0, it's a 0-9 value.
+		///     <list type="table">
+		///         <listheader>
+		///             <term>Type</term>
+		///             <description>What It Does</description>
+		///             <term2>What To Enter</term2>
+		///         </listheader>
+		///         <item>
+		///             <term>Regular</term>
+		///             <description>This is essentially just the mundane colors.</description>
+		///         </item>
+		///         <item>
+		///             <term>Bold</term>
+		///             <description>This will make the text and color bold and more prominent.</description>
+		///         </item>
+		///         <item>
+		///             <term>Dulled</term>
+		///             <description>The opposite of Bold, it will make the text and color dark and less prominent.</description>
+		///         </item>
+		///         <item>
+		///             <term>Italic</term>
+		///             <description>This will make the text along with the color Italic.</description>
+		///         </item>
+		///         <item>
+		///             <term>Underlined</term>
+		///             <description>This will make the text along with the color Underlined.</description>
+		///         </item>
+		///         <item>
+		///             <term>Blink</term>
+		///             <description>This will make the text along with the color Blink on and off.</description>
+		///         </item>
+		///         <item>
+		///             <term>Rapid</term>
+		///             <description>This will make the text along with the color Rapidly Blink on and off.</description>
+		///         </item>
+		///         <item>
+		///             <term>Highlight</term>
+		///             <description>This will make the text the shade given and the background behind it the inverse of the shade specified.</description>
+		///         </item>
+		///         <item>
+		///             <term>Underlight</term>
+		///             <description>This will make the text invisible along with the color.</description>
+		///         </item>
+		///         <item>
+		///             <term>Strikethrough</term>
+		///             <description>This will make the text look like it has a line going through it.</description>
+		///         </item>
+		///     </list>
+		/// </param>
+		/// <returns>The Color object with the given type passed in rather than the original type.</returns>
+		/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+		public ColorRGB GetTypeVariant(int type) 
+		{
+			ColorRGB color = new ColorRGB(type, Red, Green, Blue, Background, Reset);
+			return color;
+		}
+		
+		/// <summary>
+		/// Get's the ColorRGB Object with its BaseColor switched out for a different one.
+		/// </summary>
+		/// <param name="red">The red value in which you want to switch in</param>
+		/// <param name="green">The green value in which you want to switch in</param>
+		/// <param name="blue">The red value in which you want to switch in</param>
+		/// <returns>The Color Object with the Given color switched in.</returns>
+		/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+		public ColorRGB GetColorVariant(int red, int green, int blue)
+		{
+			ColorRGB color = new ColorRGB(Type, red, green, blue, Background, Reset);
+			return color;
+		}
+		
+		/// <summary>
+		/// Get's the ColorRGB Object with its BaseColor switched out for a different one.
+		/// </summary>
+		/// <param name="rgbPair">The tupple as a resultant of a RGB Conversion.</param>
+		/// <returns>The Color Object with the Given color switched in.</returns>
+		/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+		public ColorRGB GetColorVariant((int red, int green, int blue) rgbPair)
+		{
+			ColorRGB color = new ColorRGB(Type, rgbPair.red, rgbPair.green, rgbPair.blue, Background, Reset);
+			return color;
+		}
+		
+		/// <summary>
+		/// A function to toggle the Background/Foreground switch from its previous state.
+		/// </summary>
+		/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+		public void ToggleBackground()
+		{
+			Background = !Background;
 		}
 	}
 }
