@@ -113,6 +113,12 @@ Since the Types and Colors can be both String and Int we need to define both luc
 |   Highlight   | The Highlighter version of the old fashioned color list, it changes both the color, and makes the foreground [text] and background invert there colors giving off the effect that it is being highlighted. |       7       |
 |  Underlight   |          The Invisible version of the old fashioned color list, it changes both the color, and and makes it so that when the text is highlighted with the cursor it will show the text contents.           |       8       |
 | Strikethrough |                           The Strikethrough version of the old fashioned color list, it changes both the color, and puts a line e.g. a strike through the text being displayed.                            |       9       |
+|  Doubleline   |                            The Doubleline version of the old fashioned color list, it changes both the color, and puts a line under the text, with another line under that line                            |      21       |
+|   Overline    |                                              The Overline version of the old fashioned color list, it changes both the color, and puts a line over the text.                                               |      53       |
+|    Framed     |                                               The Framed version of the old fashioned color list, it changes both the color, and puts a box around the text.                                               |      51       |
+|   Encircled   |                                            The Encircled version of the old fashioned color list, it changes both the color, and puts a circle around the text.                                            |      52       |
+
+Doubleline, Overline, Framed, and Encircled are part of version 1.2.0+ of the library.
 ##### Colors
 |  Input  | Input Number |
 |:-------:|:------------:|
@@ -262,6 +268,12 @@ Since the Types can be both String and Int we need to define both luckily we alr
 |   Highlight   | The Highlighter version of the old fashioned color list, it changes both the color, and makes the foreground [text] and background invert there colors giving off the effect that it is being highlighted. |       7       |
 |  Underlight   |          The Invisible version of the old fashioned color list, it changes both the color, and and makes it so that when the text is highlighted with the cursor it will show the text contents.           |       8       |
 | Strikethrough |                           The Strikethrough version of the old fashioned color list, it changes both the color, and puts a line e.g. a strike through the text being displayed.                            |       9       |
+|  Doubleline   |                            The Doubleline version of the old fashioned color list, it changes both the color, and puts a line under the text, with another line under that line                            |      21       |
+|   Overline    |                                              The Overline version of the old fashioned color list, it changes both the color, and puts a line over the text.                                               |      53       |
+|    Framed     |                                               The Framed version of the old fashioned color list, it changes both the color, and puts a box around the text.                                               |      51       |
+|   Encircled   |                                            The Encircled version of the old fashioned color list, it changes both the color, and puts a circle around the text.                                            |      52       |
+
+Doubleline, Overline, Framed, and Encircled are part of version 1.2.0+ of the library.
 
 Okay now back to the Constructor, the shade parameter is a value of 0-255, there are also 2 optional bool's all defaulting to false, here's how they work;
 * Reset - Marks the Object as a Reset Object and makes the appropriate reset object.
@@ -371,6 +383,12 @@ The below table is associated with the first variable of the constructor; the Ty
 |   Highlight   | The Highlighter version of the old fashioned color list, it changes both the color, and makes the foreground [text] and background invert there colors giving off the effect that it is being highlighted. |       7       |
 |  Underlight   |          The Invisible version of the old fashioned color list, it changes both the color, and and makes it so that when the text is highlighted with the cursor it will show the text contents.           |       8       |
 | Strikethrough |                           The Strikethrough version of the old fashioned color list, it changes both the color, and puts a line e.g. a strike through the text being displayed.                            |       9       |
+|  Doubleline   |                            The Doubleline version of the old fashioned color list, it changes both the color, and puts a line under the text, with another line under that line                            |      21       |
+|   Overline    |                                              The Overline version of the old fashioned color list, it changes both the color, and puts a line over the text.                                               |      53       |
+|    Framed     |                                               The Framed version of the old fashioned color list, it changes both the color, and puts a box around the text.                                               |      51       |
+|   Encircled   |                                            The Encircled version of the old fashioned color list, it changes both the color, and puts a circle around the text.                                            |      52       |
+
+Doubleline, Overline, Framed, and Encircled are part of version 1.2.0+ of the library.
 
 Okay now back to the Constructor, After the Type you chose, there are 3 parameters that follow these correlate with; Red, Green, Blue, each are a 0-255 integer, there are also 2 optional bool's all defaulting to false, here's how they work;
 * Reset - Marks the Object as a Reset Object and makes the appropriate reset object.

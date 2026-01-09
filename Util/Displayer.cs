@@ -222,6 +222,14 @@ namespace Cecil_Libraries.ANSI_Utils.Util
 					Color typedColor = new Color(type, i);
 					LinetoPrint += $"{typedColor.Format()}{typedColor.GetTypeString()}{typedColor.GetReset().Format()} ";
 				}
+				Color typedColor2 = new Color(21, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+				typedColor2 = new Color(53, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+				typedColor2 = new Color(51, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+				typedColor2 = new Color(52, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
 				Console.WriteLine(LinetoPrint + $"{baseColor.GetReset().Format()}");
 				if (i % 15 == 0 && i != 0)
 				{
@@ -241,6 +249,14 @@ namespace Cecil_Libraries.ANSI_Utils.Util
 					Color typedColor = new Color(type, i, highIntensity:true);
 					LinetoPrint += $"{typedColor.Format()}{typedColor.GetTypeString()}{typedColor.GetReset().Format()} ";
 				}
+				Color typedColor2 = new Color(21, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+				typedColor2 = new Color(53, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+				typedColor2 = new Color(51, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+				typedColor2 = new Color(52, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
 				Console.WriteLine(LinetoPrint + $"{baseColor.GetReset().Format()}");
 				if (i % 15 == 0 && i != 0)
 				{
@@ -260,6 +276,14 @@ namespace Cecil_Libraries.ANSI_Utils.Util
 					Color typedColor = new Color(type, i, background:true);
 					LinetoPrint += $"{typedColor.Format()}{typedColor.GetTypeString()}{typedColor.GetReset().Format()} ";
 				}
+				Color typedColor2 = new Color(21, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+				typedColor2 = new Color(53, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+				typedColor2 = new Color(51, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+				typedColor2 = new Color(52, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
 				Console.WriteLine(LinetoPrint + $"{baseColor.GetReset().Format()}");
 				if (i % 15 == 0 && i != 0)
 				{
@@ -279,6 +303,14 @@ namespace Cecil_Libraries.ANSI_Utils.Util
 					Color typedColor = new Color(type, i, background:true, highIntensity:true);
 					LinetoPrint += $"{typedColor.Format()}{typedColor.GetTypeString()}{typedColor.GetReset().Format()} ";
 				}
+				Color typedColor2 = new Color(21, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+				typedColor2 = new Color(53, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+				typedColor2 = new Color(51, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+				typedColor2 = new Color(52, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
 				Console.WriteLine(LinetoPrint + $"{baseColor.GetReset().Format()}");
 				if (i % 15 == 0 && i != 0)
 				{
@@ -310,6 +342,14 @@ namespace Cecil_Libraries.ANSI_Utils.Util
 					Color256 typedColor = new Color256(type, i);
 					LinetoPrint += $"{typedColor.Format()}{typedColor.GetTypeString()}{typedColor.GetReset().Format()} ";
 				}
+				Color256 typedColor2 = new Color256(21, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+				typedColor2 = new Color256(53, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+				typedColor2 = new Color256(51, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+				typedColor2 = new Color256(52, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
 				Console.WriteLine(LinetoPrint + $"{baseColor.GetReset().Format()}");
 				if (i % 15 == 0 && i != 0)
 				{
@@ -329,6 +369,14 @@ namespace Cecil_Libraries.ANSI_Utils.Util
 					Color256 typedColor = new Color256(type, i, background:true);
 					LinetoPrint += $"{typedColor.Format()}{typedColor.GetTypeString()}{typedColor.GetReset().Format()} ";
 				}
+				Color256 typedColor2 = new Color256(21, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+				typedColor2 = new Color256(53, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+				typedColor2 = new Color256(51, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+				typedColor2 = new Color256(52, i);
+				LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
 				Console.WriteLine(LinetoPrint + $"{baseColor.GetReset().Format()}");
 				if (i % 15 == 0 && i != 0)
 				{
@@ -364,6 +412,14 @@ namespace Cecil_Libraries.ANSI_Utils.Util
 							ColorRGB typedColor = new ColorRGB(type, r, g, b);
 							LinetoPrint += $"{typedColor.Format()}{typedColor.GetTypeString()}{typedColor.GetReset().Format()} ";
 						}
+						ColorRGB typedColor2 = new ColorRGB(21, r, g, b);
+						LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+						typedColor2 = new ColorRGB(53, r, g, b);
+						LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+						typedColor2 = new ColorRGB(51, r, g, b);
+						LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+						typedColor2 = new ColorRGB(52, r, g, b);
+						LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
 						Console.WriteLine(LinetoPrint + $"{baseColor.GetReset().Format()}");
 					}
 				}
@@ -384,6 +440,14 @@ namespace Cecil_Libraries.ANSI_Utils.Util
 							ColorRGB typedColor = new ColorRGB(type, r, g, b, background:true);
 							LinetoPrint += $"{typedColor.Format()}{typedColor.GetTypeString()}{typedColor.GetReset().Format()} ";
 						}
+						ColorRGB typedColor2 = new ColorRGB(21, r, g, b);
+						LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+						typedColor2 = new ColorRGB(53, r, g, b);
+						LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+						typedColor2 = new ColorRGB(51, r, g, b);
+						LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
+						typedColor2 = new ColorRGB(52, r, g, b);
+						LinetoPrint += $"{typedColor2.Format()}{typedColor2.GetTypeString()}{typedColor2.GetReset().Format()} ";
 						Console.WriteLine(LinetoPrint + $"{baseColor.GetReset().Format()}");
 					}
 				}

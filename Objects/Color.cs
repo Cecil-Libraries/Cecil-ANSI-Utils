@@ -1,5 +1,4 @@
 ﻿using Cecil_Libraries.ANSI_Utils.Lists;
-using System.Linq;
 
 namespace Cecil_Libraries.ANSI_Utils.Objects
 {
@@ -45,53 +44,67 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 		/// The colors follow this order; Black, Red, Green, Yellow, Blue, Magenta, Cyan, White, if by number 0-7, otherwise the string as shown.
 		/// </param>
 		/// <param name="type">
-		///		If by number, follow the order given in the table starting with 0, it's a 0-9 value.
 		///     <list type="table">
 		///         <listheader>
 		///             <term>Type</term>
 		///             <description>What It Does</description>
-		///             <term2>What To Enter</term2>
 		///         </listheader>
 		///         <item>
-		///             <term>Regular</term>
+		///             <term>Regular (0)</term>
 		///             <description>This is essentially just the mundane colors.</description>
 		///         </item>
 		///         <item>
-		///             <term>Bold</term>
+		///             <term>Bold (1)</term>
 		///             <description>This will make the text and color bold and more prominent.</description>
 		///         </item>
 		///         <item>
-		///             <term>Dulled</term>
+		///             <term>Dulled (2)</term>
 		///             <description>The opposite of Bold, it will make the text and color dark and less prominent.</description>
 		///         </item>
 		///         <item>
-		///             <term>Italic</term>
+		///             <term>Italic (3)</term>
 		///             <description>This will make the text along with the color Italic.</description>
 		///         </item>
 		///         <item>
-		///             <term>Underlined</term>
+		///             <term>Underlined (4)</term>
 		///             <description>This will make the text along with the color Underlined.</description>
 		///         </item>
 		///         <item>
-		///             <term>Blink</term>
+		///             <term>Blink (5)</term>
 		///             <description>This will make the text along with the color Blink on and off.</description>
 		///         </item>
 		///         <item>
-		///             <term>Rapid</term>
+		///             <term>Rapid (6)</term>
 		///             <description>This will make the text along with the color Rapidly Blink on and off.</description>
 		///         </item>
 		///         <item>
-		///             <term>Highlight</term>
+		///             <term>Highlight (7)</term>
 		///             <description>This will make the text the shade given and the background behind it the inverse of the shade specified.</description>
 		///         </item>
 		///         <item>
-		///             <term>Underlight</term>
+		///             <term>Underlight (8)</term>
 		///             <description>This will make the text invisible along with the color.</description>
 		///         </item>
 		///         <item>
-		///             <term>Strikethrough</term>
+		///             <term>Strikethrough (9)</term>
 		///             <description>This will make the text look like it has a line going through it.</description>
 		///         </item>
+		///			<item>
+		///             <term>Doubleline (21)</term>
+		///             <description>This will make the text appear with an underline, and a underline under that underline.</description>
+		///			</item>
+		///			<item>
+		///             <term>Overlined (53)</term>
+		///             <description>This will make the text appear with an overline.</description>
+		///			</item>
+		///			<item>
+		///             <term>Framed (51)</term>
+		///             <description>This will make the text appear boxed.</description>
+		///			</item>
+		///			<item>
+		///             <term>Encircled (52)</term>
+		///             <description>This will make the text appear circled.</description>
+		///			</item>
 		///     </list>
 		/// </param>
 		/// <param name="background">Whether the applicant color should be applied to the background or foreground, defaults to foreground.</param>
@@ -123,7 +136,7 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 				        Type = 0;
 				        break;
 			        case "Bold":
-				        Type = int.Parse("2" + 1.ToString());
+				        Type = int.Parse("2" + 2.ToString());
 				        break;
 			        case "Dulled":
 				        Type = int.Parse("2" + 2.ToString());
@@ -148,6 +161,18 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 				        break;
 			        case "Strikethrough":
 				        Type = int.Parse("2" + 9.ToString());
+				        break;
+			        case "Doubleline":
+				        Type = int.Parse("2" + 4.ToString());
+				        break;
+			        case "Overlined":
+				        Type = int.Parse("5" + 5.ToString());
+				        break;
+			        case "Framed":
+				        Type = int.Parse("5" + 4.ToString());
+				        break;
+			        case "Encircled":
+				        Type = int.Parse("5" + 4.ToString());
 				        break;
 		        }
 	        } else if (!reset)
@@ -183,6 +208,18 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 				        break;
 			        case "Strikethrough":
 				        Type = 9;
+				        break;
+			        case "Doubleline":
+				        Type = 21;
+				        break;
+			        case "Overlined":
+						Type = 53;
+				        break;
+			        case "Framed":
+				        Type = 51;
+				        break;
+			        case "Encircled":
+				        Type = 52;
 				        break;
 		        }
 	        }
@@ -237,53 +274,67 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 		/// The colors follow this order; Black, Red, Green, Yellow, Blue, Magenta, Cyan, White, if by number 0-7, otherwise the string as shown.
 		/// </param>
 		/// <param name="type">
-		///		If by number, follow the order given in the table starting with 0, it's a 0-9 value.
 		///     <list type="table">
 		///         <listheader>
 		///             <term>Type</term>
 		///             <description>What It Does</description>
-		///             <term2>What To Enter</term2>
 		///         </listheader>
 		///         <item>
-		///             <term>Regular</term>
+		///             <term>Regular (0)</term>
 		///             <description>This is essentially just the mundane colors.</description>
 		///         </item>
 		///         <item>
-		///             <term>Bold</term>
+		///             <term>Bold (1)</term>
 		///             <description>This will make the text and color bold and more prominent.</description>
 		///         </item>
 		///         <item>
-		///             <term>Dulled</term>
+		///             <term>Dulled (2)</term>
 		///             <description>The opposite of Bold, it will make the text and color dark and less prominent.</description>
 		///         </item>
 		///         <item>
-		///             <term>Italic</term>
+		///             <term>Italic (3)</term>
 		///             <description>This will make the text along with the color Italic.</description>
 		///         </item>
 		///         <item>
-		///             <term>Underlined</term>
+		///             <term>Underlined (4)</term>
 		///             <description>This will make the text along with the color Underlined.</description>
 		///         </item>
 		///         <item>
-		///             <term>Blink</term>
+		///             <term>Blink (5)</term>
 		///             <description>This will make the text along with the color Blink on and off.</description>
 		///         </item>
 		///         <item>
-		///             <term>Rapid</term>
+		///             <term>Rapid (6)</term>
 		///             <description>This will make the text along with the color Rapidly Blink on and off.</description>
 		///         </item>
 		///         <item>
-		///             <term>Highlight</term>
+		///             <term>Highlight (7)</term>
 		///             <description>This will make the text the shade given and the background behind it the inverse of the shade specified.</description>
 		///         </item>
 		///         <item>
-		///             <term>Underlight</term>
+		///             <term>Underlight (8)</term>
 		///             <description>This will make the text invisible along with the color.</description>
 		///         </item>
 		///         <item>
-		///             <term>Strikethrough</term>
+		///             <term>Strikethrough (9)</term>
 		///             <description>This will make the text look like it has a line going through it.</description>
 		///         </item>
+		///			<item>
+		///             <term>Doubleline (21)</term>
+		///             <description>This will make the text appear with an underline, and a underline under that underline.</description>
+		///			</item>
+		///			<item>
+		///             <term>Overlined (53)</term>
+		///             <description>This will make the text appear with an overline.</description>
+		///			</item>
+		///			<item>
+		///             <term>Framed (51)</term>
+		///             <description>This will make the text appear boxed.</description>
+		///			</item>
+		///			<item>
+		///             <term>Encircled (52)</term>
+		///             <description>This will make the text appear circled.</description>
+		///			</item>
 		///     </list>
 		/// </param>
 		/// <param name="background">Whether the applicant color should be applied to the background or foreground, defaults to foreground.</param>
@@ -309,8 +360,28 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 	        
 	        if (reset)
 	        {
-		        if (type != 0)
-			        Type = int.Parse("2" + type.ToString());
+		        switch (type)
+		        {
+			        case 0:
+				        Type = 0;
+				        break;
+			        case 1:
+				        Type = 22;
+				        break;
+			        case 21:
+				        Type = 24;
+				        break;
+			        case 51:
+			        case 52:
+				        Type = 54;
+				        break;
+			        case 53:
+				        Type = 55;
+				        break;
+			        default:
+				        Type = int.Parse("2" + type.ToString());
+				        break;
+		        }
 	        } else if (!reset)
 	        {
 		        Type = type;
@@ -366,53 +437,67 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 		/// The colors follow this order; Black, Red, Green, Yellow, Blue, Magenta, Cyan, White, if by number 0-7, otherwise the string as shown.
 		/// </param>
 		/// <param name="type">
-		///		If by number, follow the order given in the table starting with 0, it's a 0-9 value.
 		///     <list type="table">
 		///         <listheader>
 		///             <term>Type</term>
 		///             <description>What It Does</description>
-		///             <term2>What To Enter</term2>
 		///         </listheader>
 		///         <item>
-		///             <term>Regular</term>
+		///             <term>Regular (0)</term>
 		///             <description>This is essentially just the mundane colors.</description>
 		///         </item>
 		///         <item>
-		///             <term>Bold</term>
+		///             <term>Bold (1)</term>
 		///             <description>This will make the text and color bold and more prominent.</description>
 		///         </item>
 		///         <item>
-		///             <term>Dulled</term>
+		///             <term>Dulled (2)</term>
 		///             <description>The opposite of Bold, it will make the text and color dark and less prominent.</description>
 		///         </item>
 		///         <item>
-		///             <term>Italic</term>
+		///             <term>Italic (3)</term>
 		///             <description>This will make the text along with the color Italic.</description>
 		///         </item>
 		///         <item>
-		///             <term>Underlined</term>
+		///             <term>Underlined (4)</term>
 		///             <description>This will make the text along with the color Underlined.</description>
 		///         </item>
 		///         <item>
-		///             <term>Blink</term>
+		///             <term>Blink (5)</term>
 		///             <description>This will make the text along with the color Blink on and off.</description>
 		///         </item>
 		///         <item>
-		///             <term>Rapid</term>
+		///             <term>Rapid (6)</term>
 		///             <description>This will make the text along with the color Rapidly Blink on and off.</description>
 		///         </item>
 		///         <item>
-		///             <term>Highlight</term>
+		///             <term>Highlight (7)</term>
 		///             <description>This will make the text the shade given and the background behind it the inverse of the shade specified.</description>
 		///         </item>
 		///         <item>
-		///             <term>Underlight</term>
+		///             <term>Underlight (8)</term>
 		///             <description>This will make the text invisible along with the color.</description>
 		///         </item>
 		///         <item>
-		///             <term>Strikethrough</term>
+		///             <term>Strikethrough (9)</term>
 		///             <description>This will make the text look like it has a line going through it.</description>
 		///         </item>
+		///			<item>
+		///             <term>Doubleline (21)</term>
+		///             <description>This will make the text appear with an underline, and a underline under that underline.</description>
+		///			</item>
+		///			<item>
+		///             <term>Overlined (53)</term>
+		///             <description>This will make the text appear with an overline.</description>
+		///			</item>
+		///			<item>
+		///             <term>Framed (51)</term>
+		///             <description>This will make the text appear boxed.</description>
+		///			</item>
+		///			<item>
+		///             <term>Encircled (52)</term>
+		///             <description>This will make the text appear circled.</description>
+		///			</item>
 		///     </list>
 		/// </param>
 		/// <param name="background">Whether the applicant color should be applied to the background or foreground, defaults to foreground.</param>
@@ -445,7 +530,7 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 				        Type = 0;
 				        break;
 			        case "Bold":
-				        Type = int.Parse("2" + 1.ToString());
+				        Type = int.Parse("2" + 2.ToString());
 				        break;
 			        case "Dulled":
 				        Type = int.Parse("2" + 2.ToString());
@@ -470,6 +555,18 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 				        break;
 			        case "Strikethrough":
 				        Type = int.Parse("2" + 9.ToString());
+				        break;
+			        case "Doubleline":
+				        Type = int.Parse("2" + 4.ToString());
+				        break;
+			        case "Overlined":
+				        Type = int.Parse("5" + 5.ToString());
+				        break;
+			        case "Framed":
+				        Type = int.Parse("5" + 4.ToString());
+				        break;
+			        case "Encircled":
+				        Type = int.Parse("5" + 4.ToString());
 				        break;
 		        }
 	        } else if (!reset)
@@ -506,6 +603,18 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 			        case "Strikethrough":
 				        Type = 9;
 				        break;
+			        case "Doubleline":
+				        Type = 21;
+				        break;
+			        case "Overlined":
+						Type = 53;
+				        break;
+			        case "Framed":
+				        Type = 51;
+				        break;
+			        case "Encircled":
+				        Type = 52;
+				        break;
 		        }
 	        }
 
@@ -521,53 +630,67 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 		/// The colors follow this order; Black, Red, Green, Yellow, Blue, Magenta, Cyan, White, if by number 0-7, otherwise the string as shown.
 		/// </param>
 		/// <param name="type">
-		///		If by number, follow the order given in the table starting with 0, it's a 0-9 value.
 		///     <list type="table">
 		///         <listheader>
 		///             <term>Type</term>
 		///             <description>What It Does</description>
-		///             <term2>What To Enter</term2>
 		///         </listheader>
 		///         <item>
-		///             <term>Regular</term>
+		///             <term>Regular (0)</term>
 		///             <description>This is essentially just the mundane colors.</description>
 		///         </item>
 		///         <item>
-		///             <term>Bold</term>
+		///             <term>Bold (1)</term>
 		///             <description>This will make the text and color bold and more prominent.</description>
 		///         </item>
 		///         <item>
-		///             <term>Dulled</term>
+		///             <term>Dulled (2)</term>
 		///             <description>The opposite of Bold, it will make the text and color dark and less prominent.</description>
 		///         </item>
 		///         <item>
-		///             <term>Italic</term>
+		///             <term>Italic (3)</term>
 		///             <description>This will make the text along with the color Italic.</description>
 		///         </item>
 		///         <item>
-		///             <term>Underlined</term>
+		///             <term>Underlined (4)</term>
 		///             <description>This will make the text along with the color Underlined.</description>
 		///         </item>
 		///         <item>
-		///             <term>Blink</term>
+		///             <term>Blink (5)</term>
 		///             <description>This will make the text along with the color Blink on and off.</description>
 		///         </item>
 		///         <item>
-		///             <term>Rapid</term>
+		///             <term>Rapid (6)</term>
 		///             <description>This will make the text along with the color Rapidly Blink on and off.</description>
 		///         </item>
 		///         <item>
-		///             <term>Highlight</term>
+		///             <term>Highlight (7)</term>
 		///             <description>This will make the text the shade given and the background behind it the inverse of the shade specified.</description>
 		///         </item>
 		///         <item>
-		///             <term>Underlight</term>
+		///             <term>Underlight (8)</term>
 		///             <description>This will make the text invisible along with the color.</description>
 		///         </item>
 		///         <item>
-		///             <term>Strikethrough</term>
+		///             <term>Strikethrough (9)</term>
 		///             <description>This will make the text look like it has a line going through it.</description>
 		///         </item>
+		///			<item>
+		///             <term>Doubleline (21)</term>
+		///             <description>This will make the text appear with an underline, and a underline under that underline.</description>
+		///			</item>
+		///			<item>
+		///             <term>Overlined (53)</term>
+		///             <description>This will make the text appear with an overline.</description>
+		///			</item>
+		///			<item>
+		///             <term>Framed (51)</term>
+		///             <description>This will make the text appear boxed.</description>
+		///			</item>
+		///			<item>
+		///             <term>Encircled (52)</term>
+		///             <description>This will make the text appear circled.</description>
+		///			</item>
 		///     </list>
 		/// </param>
 		/// <param name="background">Whether the applicant color should be applied to the background or foreground, defaults to foreground.</param>
@@ -591,11 +714,31 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 				digitStart = 9;
 			else if (!background && !highIntensity)
 				digitStart = 3;
-
+			
 			if (reset)
 			{
-				if (type != 0)
-					Type = int.Parse("2" + type.ToString());
+				switch (type)
+				{
+					case 0:
+						Type = 0;
+						break;
+					case 1:
+						Type = 22;
+						break;
+					case 21:
+						Type = 24;
+						break;
+					case 51:
+					case 52:
+						Type = 54;
+						break;
+					case 53:
+						Type = 55;
+						break;
+					default:
+						Type = int.Parse("2" + type.ToString());
+						break;
+				}
 			} else if (!reset)
 			{
 				Type = type;
@@ -647,28 +790,36 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 		/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
 		public string GetTypeString() 
 		{
-			switch (Type.ToString().Last())
+			switch (Type)
 			{
-				case '0':
+				case 0:
 					return "Regular";
-				case '1':
+				case 1:
 					return "Bold";
-				case '2':
+				case 2:
 					return "Dulled";
-				case '3':
+				case 3:
 					return "Italic";
-				case '4':
+				case 4:
 					return "Underlined";
-				case '5':
+				case 5:
 					return "Blink";
-				case '6':
+				case 6:
 					return "Rapid";
-				case '7':
+				case 7:
 					return "Highlight";
-				case '8':
+				case 8:
 					return "Underlight";
-				case '9':
+				case 9:
 					return "Strikethrough";
+				case 21:
+					return "Doubleline";
+				case 53:
+					return "Overlined";
+				case 51:
+					return "Framed";
+				case 52:
+					return "Encircled";
 			}
 			return $"Failed to get a Valid Type please verify {Type}, if its valid contact @thincreator3483 on discord.";
 		}

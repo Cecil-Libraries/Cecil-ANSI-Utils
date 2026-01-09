@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>netframework4.7.2</TargetFramework>
+        <TargetFrameworks>netstandard2.0;netstandard2.1;netframework4.7.2;netframework4.8;netframework4.8.1;net5.0;net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
+        <RuntimeIdentifiers>win-x64;win-x86;win-arm64;linux-x64;linux-arm;linux-arm64;linux-musl-x64;linux-musl-arm64;osx-x64;osx-arm64;browser-wasm</RuntimeIdentifiers>
         <AssemblyName>Cecil ANSI Utils</AssemblyName>
         <Description>A library of ANSI Utilities for the C# Console environment, mainly Color Modes [foreground and background], and Text Processing Modes, also includes RGB Conversions for ColorRGB</Description>
-        <Version>1.1.0</Version>
+        <Version>1.2.0</Version>
         <Authors>Organization Cecil Libraries, Founder(s) Chaosyr</Authors>
         <Company>Organization Cecil Libraries, Founder(s) Chaosyr</Company>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -26,10 +27,14 @@
         <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
         <PackageIcon>icon.png</PackageIcon>
         <PackageReleaseNotes>
-            * Added GetTypeVariant(), docs will have a updated section for it, but what it does is when a Color Object is present you can cast `GetTypeVariant(string\int)` and get the Object set to that Mode with the same Color. 
-            * Similarly we also added `GetColorVariant` which works similarly but with the color, we reccomend not using both systems with a singular object it will get messy quick.
-            * Added `ToggleBackground()` and `ToggleHighIntensity()` these will toggle the state of the given boolean on the Object itself.
-            * RGB Tupples in the RGB Object related RGB sections, this was done for ease of Use with the RGB Conversions.
+            * Fixed Reset for Color Objects set as Bold.
+            * Added Modes to Color Objects called "Doubleline", "Overline", "Framed", "Encircled".
+            * Fixed Resets fully.
+            * Updated the displayers to include the 4 new modes.
+            * Toggle on Package Support for NetStandard2.0, NetStandard2.1, Framework4.8, Framework4.8.1, Net5, Net6, Net7, Net8, Net9, Net10
+            * Toggle on Support for the following Redistributables; win-x64;win-x86;win-arm64;linux-x64;linux-arm;linux-arm64;linux-musl-x64;linux-musl-arm64;osx-x64;osx-arm64;browser-wasm
+            Next Update aim is to support Java!! [NativeAOT], in the mean time if theres anything you want to request for the library dm @thincreator3483 on discord!
+            Oh yeah btw, some of the new modes may not display because consoles are silly and dont support them, if someone wants to help I think it could be really cool to build our own Cecil-Console or something.
         </PackageReleaseNotes>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     </PropertyGroup>
