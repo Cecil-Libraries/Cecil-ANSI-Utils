@@ -4,7 +4,7 @@
         <RuntimeIdentifiers>win-x64;win-x86;win-arm64;linux-x64;linux-arm;linux-arm64;linux-musl-x64;linux-musl-arm64;osx-x64;osx-arm64;browser-wasm</RuntimeIdentifiers>
         <AssemblyName>Cecil ANSI Utils</AssemblyName>
         <Description>A library of ANSI Utilities for the C# Console environment, mainly Color Modes [foreground and background], and Text Processing Modes, also includes RGB Conversions for ColorRGB</Description>
-        <Version>1.2.0</Version>
+        <Version>2.0.0</Version>
         <Authors>Organization Cecil Libraries, Founder(s) Chaosyr</Authors>
         <Company>Organization Cecil Libraries, Founder(s) Chaosyr</Company>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -27,14 +27,10 @@
         <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
         <PackageIcon>icon.png</PackageIcon>
         <PackageReleaseNotes>
-            * Fixed Reset for Color Objects set as Bold.
-            * Added Modes to Color Objects called "Doubleline", "Overline", "Framed", "Encircled".
-            * Fixed Resets fully.
-            * Updated the displayers to include the 4 new modes.
-            * Toggle on Package Support for NetStandard2.0, NetStandard2.1, Framework4.8, Framework4.8.1, Net5, Net6, Net7, Net8, Net9, Net10
-            * Toggle on Support for the following Redistributables; win-x64;win-x86;win-arm64;linux-x64;linux-arm;linux-arm64;linux-musl-x64;linux-musl-arm64;osx-x64;osx-arm64;browser-wasm
-            Next Update aim is to support Java!! [NativeAOT], in the mean time if theres anything you want to request for the library dm @thincreator3483 on discord!
-            Oh yeah btw, some of the new modes may not display because consoles are silly and dont support them, if someone wants to help I think it could be really cool to build our own Cecil-Console or something.
+        * Refactored the code to simplify reading for developers.
+        * There is now a Base Object shared by Color, Color256, and ColorRGB, each child of ColorBase contains the constructor, and properties/functions unique to it.
+        * Parts of the Constructor's have been refactored into Utils to simplify the code and make the code base more optimized and efficient.
+        * Updated some Code Comments to be more straight-forwards.
         </PackageReleaseNotes>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     </PropertyGroup>

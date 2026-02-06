@@ -84,6 +84,24 @@ These are pretty straight forward, there are 3 hard coded constants provided for
 * `ANSICodeLists.ResetColor` this resets all effects done to the foreground, background, and all Text Types to default.
 * `ANSICodeLists.ResetForeground` this resets all effects done to the foreground.
 * `ANSICodeLists.ResetBackground` this resets all effects done to the background.
+
+### ColorBase Object (2.0.0+)
+This is the base object shared by Color, Color256 and ColorRGB, it contains shared variables and functions.
+#### Getters and Setters
+|   Entry    |                                                                  What it is and or is used to do                                                                  |
+|:----------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| BaseString |                                                       This is the base of the ANSI Escape Code for Colors.                                                        |
+|    Type    |                                         The effect being applied to the Text Processor, this is in the form of a Integer                                          |
+| BasicShade | This is the shade after the constructors run through their logic, the first 1-2 digits are whether its background or foreground, and the last digit is the shade. |
+|   Reset    |                                                A bool determining whether the Object classifies as a Reset or not,                                                |
+| Background |                                             A bool determining whether the Object classifies as a Background or not.                                              |
+|   Extra    |                               A variable for defining any Child Specific components in the ANSI Code String that .Format() creates.                               |
+#### GetTypeString()
+This function pretty much just says oh, we have this Type, and we had a String switch already to make it an integer, lets reverse the integers last digit back to the original string and send that back. This has little to no use case off the top of my head and is mainly utilized for the Displayer associated with the Color object.
+#### Format()
+This function is vital to displaying the Code onto the screen so it takes affect. What this does well, in laymen's terms it formats the Variables in the Object into a Proper ANSI Escape Code for Colors. Though it's a bit more complex, and I'd recommend checking out the code to see the full of what it does! Same for the Constructors if you have not!
+#### ToggleBackground()
+This function just switches the State of the Foreground to Background and vice versa for the Object given.
 ### Color Object
 This is a more refined system for doing basic stuff with ANSI Color Codes, it was made for the purpose of being in this Project. Beware this will be a long section because it's a powerful Object. So first off let's go over the getters and setters of the Object.
 #### Getters and Setters
@@ -148,13 +166,13 @@ This function pretty much just says, hey this is our current object, lets just p
 This function pretty much just says oh, we have this Type, and we had a String switch already to make it an integer, lets reverse the integers last digit back to the original string and send that back. This has little to no use case off the top of my head and is mainly utilized for the Displayer associated with the Color object.
 #### Format()
 This function is vital to displaying the Code onto the screen so it takes affect. What this does well, in laymen's terms it formats the Variables in the Object into a Proper ANSI Escape Code for Colors. Though it's a bit more complex, and I'd recommend checking out the code to see the full of what it does! Same for the Constructors if you have not!
-#### GetTypeVariant(string/int type) 1.1.0+
+#### GetTypeVariant(string/int type) (1.1.0+)
 This function essentially says, so this is our current object, lets take that and give it the type your after.
-#### GetColorVariant(string/int color) 1.1.0+
+#### GetColorVariant(string/int color) (1.1.0+)
 This function does similar to GetTypeVariant() however, it affects the set color instead.
-#### ToggleBackground() 1.1.0+
+#### ToggleBackground() (1.1.0+)
 This function just switches the State of the Foreground to Background and vice versa for the Object given.
-#### ToggleHighIntensity() 1.1.0+
+#### ToggleHighIntensity() (1.1.0+)
 This function just switches the State of the HighIntensity to LowIntensity and vice versa for the Object given.
 #### Displayer
 There is a Displayer associated with this Object to show all possibilities, you can call it via `Displayer.DisplayColor()`, this one I'd run yourself sense almost every console displays it differently for some reason The first screenshot is taken with JetBrains Rider, and the latter is taken with Microsoft's built-in Windows 11 Terminal. I show both rather than just Rider because Microsoft's Terminal actually handles the Underlight correctly (*claps*), however at the same time for some reason when Dulled Italic and Underlined are next to each other it decides to underline all 3 of them?!?! In fact double underline applied for Dulled and Italic, each mode is reset after usage for record so that shouldn't even be possible. But that's asides the point XD
@@ -290,11 +308,11 @@ This function pretty much just says, hey this is our current object, lets just p
 This function pretty much just says oh, we have this Type, and we had a String switch already to make it an integer, lets reverse the integers last digit back to the original string and send that back. This has little to no use case off the top of my head and is mainly utilized for the Displayer associated with the Color object.
 #### Format()
 This function is vital to displaying the Code onto the screen so it takes affect. What this does well, in laymen's terms it formats the Variables in the Object into a Proper ANSI Escape Code for Colors. Though it's a bit more complex, and I'd recommend checking out the code to see the full of what it does! Same for the Constructors if you have not!
-#### GetTypeVariant(string/int type) 1.1.0+
+#### GetTypeVariant(string/int type) (1.1.0+)
 This function essentially says, so this is our current object, lets take that and give it the type your after.
-#### GetColorVariant(int color) 1.1.0+
+#### GetColorVariant(int color) (1.1.0+)
 This function does similar to GetTypeVariant() however, it affects the set color instead.
-#### ToggleBackground() 1.1.0+
+#### ToggleBackground() (1.1.0+)
 This function just switches the State of the Foreground to Background and vice versa for the Object given.
 #### Displayer
 There is a Displayer associated with this Object to show all possibilities, you can call it via `Displayer.DisplayColor256()`, it'll look similar to the one outlined in the Color Object, also because there's a ton of them, there won't be screenshots so, I encourage you run it yourself!!! And yeah it has the same display issues that were mentioned on the Color Object (would be really cool if they were fixed if your listening Microsoft, and if you brought back Blinking)
@@ -403,11 +421,11 @@ This function pretty much just says, hey this is our current object, lets just p
 This function pretty much just says oh, we have this Type, and we had a String switch already to make it an integer, lets reverse the integers last digit back to the original string and send that back. This has little to no use case off the top of my head and is mainly utilized for the Displayer associated with the Color object.
 #### Format()
 This function is vital to displaying the Code onto the screen so it takes affect. What this does well, in laymen's terms it formats the Variables in the Object into a Proper ANSI Escape Code for Colors. Though it's a bit more complex, and I'd recommend checking out the code to see the full of what it does! Same for the Constructors if you have not!
-#### GetTypeVariant(string/int type) 1.1.0+
+#### GetTypeVariant(string/int type) (1.1.0+)
 This function essentially says, so this is our current object, lets take that and give it the type your after.
 #### GetColorVariant(int red, int green, int blue/Tupple(int red, int green, int blue)) 1.1.0+
 This function does similar to GetTypeVariant() however, it affects the set color instead.
-#### ToggleBackground() 1.1.0+
+#### ToggleBackground() (1.1.0+)
 This function just switches the State of the Foreground to Background and vice versa for the Object given.
 #### Displayer
 So while we do have a Displayer with `Displayer.DisplayColorRGB()`, it will take an hour or so to complete so, I would advise instead opening an Art Program or similar and using the Color Picker to choose a color. Plus it also doesn't have a functional [had a pause but, it only worked in one iteration of green so removed it] pausing system.
@@ -591,9 +609,15 @@ Taken in JetBrains Rider
 ![Screenshots/Screenshot-18.png](https://raw.githubusercontent.com/Cecil-Libraries/Cecil-ANSI-Utils/refs/heads/main/Screenshots/Screenshot-18.png)
 
 Again pretty much identical to the prior examples just this time it utilizes HSL instead, this one is off by 1 in the R and B and 2 in the G, again not sure where the rounding errors stem from.
+### ColorBaseTypeSwitch (2.0.0+)
+This is a set of functions meant more so for internal use, that handles convering a string/int type into the proper type code used in the Color Objects.
+### ColorTypeSwitch (2.0.0+)
+Child specific functions for getting the color from a string or int as a int and for creating the BasicShade variable.
+### GetDigitStart (2.0.0+)
+This handles getting the digit at the start of the BasicShade peice used within the Color Objects.
 ## Credits;
 * See Code Comments for more precise credits
-* Chaosyr/SaxbyMod/Creator; The ANSI Lists (Obsolete), Color Objects, GetColorFromType (Obsolete), Conversions to RGB code, Displayer, the Full Documentation as it stands.
+* Chaosyr/SaxbyMod/Creator; The ANSI Lists (Obsolete), Color Objects, GetColorFromType (Obsolete), Conversions to RGB code, Displayer, GetDigitStart, ColorTypeSwitch, ColorBaseTypeSwitch the Full Documentation as it stands.
 ## Attribution to Guides we looked at;
 * For the Original List's they source from this Gist, and Chaosyr a few years back as of writing experimented to find out all the Types, and recently found out about the Rapid Blink mode, which is exclusive to the Color Objects; https://gist.github.com/RabaDabaDoba/145049536f815903c79944599c6f952a
 * For the Color Object's we took a look at the following documentation to see if there was more we could do ANSI wise turns out RGB and 256 was a thing, same with separated Resets (not mentioned here, iwrc): https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797

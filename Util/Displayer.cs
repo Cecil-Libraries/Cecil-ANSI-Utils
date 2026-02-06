@@ -5,7 +5,7 @@ using System;
 namespace Cecil_Libraries.ANSI_Utils.Util
 {
 	/// <summary>
-	/// This is a class containing all of the Displayer's for the various Color Systems provided.
+	/// This class contains displayers for each of the Object's as well as the Lists. Here is the assortment <see cref="DisplayListBased"/> for the List Displayer, <see cref="DisplayColor"/> for the Color Object Displayer, <see cref="DisplayColor256"/> for the Color256 Object Displayer, <see cref="DisplayColorRGB"/> for the ColorRGB Object Displayer.
 	/// </summary>
 	/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
 	public class Displayer

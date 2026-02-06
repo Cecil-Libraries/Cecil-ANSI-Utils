@@ -3,7 +3,7 @@
 namespace Cecil_Libraries.ANSI_Utils.Util
 {
 	/// <summary>
-	/// This class contains a bunch of conversions into RGB, namely Hex, Gray, HSL, HSV.
+	/// This class contains functions related to RGB Conversions. For Hex Code; <see cref="ConverToRGBFromHex"/>, for Greyscale; <see cref="ConvertToRGBFromGrayscale"/>, for HSV; <see cref="ConvertToRGBFromHueShadeValue"/> for HSL; <see cref="ConvertToRGBFromHueSaturationLightness"/>.
 	/// </summary>
 	/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
 	public class ConvertFromXToRGB

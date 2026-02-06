@@ -4,10 +4,10 @@ using System;
 namespace Cecil_Libraries.ANSI_Utils.Util
 {
 	/// <summary>
-	/// This class has 2 functions in which will get colors with Type Switches from the ANSICodeLists, its reccomended you utilize the Color Objects instead.
+	/// This class contains functions related to getting the list of typed colors based on the type passed in, and from that getting the passed in color and returning the code from it. There are two functions <see cref="GetColorFromInt"/>, <see cref="GetColorFromString"/>.
 	/// </summary>
 	/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
-	[Obsolete]
+	[Obsolete("Hey, we are going to recommend you use the Color Object system instead, this code is Obsolete.")]
 	public class GetColorFromType
 	{
 		/// <summary>
@@ -115,7 +115,7 @@ namespace Cecil_Libraries.ANSI_Utils.Util
 		/// <param name="type">The mode the color should appear in, default is Regular.</param>
 		/// <returns>The color of the List associated with the type at x.</returns>
 		/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
-		[Obsolete]
+		[Obsolete("Hey, we are going to recommend you use the Color Object system instead, this code is Obsolete.")]
 		public static string GetColorFromInt(int x, string type = "Regular")
 		{
 			string[] typedList = type switch
@@ -251,7 +251,7 @@ namespace Cecil_Libraries.ANSI_Utils.Util
 		/// <param name="type">The mode the color should appear in, default is Regular.</param>
 		/// <returns>The color of the list associated with the type at the color chosen.</returns>
 		/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
-		[Obsolete]
+		[Obsolete("Hey, we are going to recommend you use the Color Object system instead, this code is Obsolete.")]
 		public static string GetColorFromString(string color, string type = "Regular")
 		{
 			int x = color switch
