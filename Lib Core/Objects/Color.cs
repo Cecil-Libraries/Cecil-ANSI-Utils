@@ -528,7 +528,9 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 		/// <summary>
 		/// Get's the Color Object with its BaseColor switched out for a different one.
 		/// </summary>
-		/// <param name="colorStr">The Color in which you want to switch in</param>
+		/// <param name="colorStr">
+		/// The colors follow this order; Black, Red, Green, Yellow, Blue, Magenta, Cyan, White, if by number 0-7, otherwise the string as shown.
+		/// </param>
 		/// <returns>The Color Object with the Given color switched in.</returns>
 		/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
 		public Color GetColorVariant(string colorStr)
@@ -540,7 +542,9 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 		/// <summary>
 		/// Get's the Color Object with its BaseColor switched out for a different one.
 		/// </summary>
-		/// <param name="colorInt">The Color in which you want to switch in</param>
+		/// <param name="colorInt">
+		/// The colors follow this order; Black, Red, Green, Yellow, Blue, Magenta, Cyan, White, if by number 0-7, otherwise the string as shown.
+		/// </param>
 		/// <returns>The Color Object with the Given color switched in.</returns>
 		/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
 		public Color GetColorVariant(int colorInt)

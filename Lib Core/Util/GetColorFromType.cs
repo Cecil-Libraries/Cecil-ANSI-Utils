@@ -1,5 +1,6 @@
 ﻿using Cecil_Libraries.ANSI_Utils.Lists;
 using System;
+using System.Collections.Generic;
 
 namespace Cecil_Libraries.ANSI_Utils.Util
 {
@@ -118,7 +119,7 @@ namespace Cecil_Libraries.ANSI_Utils.Util
 		[Obsolete("Hey, we are going to recommend you use the Color Object system instead, this code is Obsolete.")]
 		public static string GetColorFromInt(int x, string type = "Regular")
 		{
-			string[] typedList = type switch
+			IReadOnlyList<string> typedList = type switch
 			{
 				"Regular" => ANSICodeLists.ColorList,
 				"Bold" => ANSICodeLists.BoldColorList,
@@ -267,7 +268,7 @@ namespace Cecil_Libraries.ANSI_Utils.Util
 				_ => 7,
 			};
 			
-			string[] typedList = type switch
+			IReadOnlyList<string> typedList = type switch
 			{
 				"Regular" => ANSICodeLists.ColorList,
 				"Bold" => ANSICodeLists.BoldColorList,

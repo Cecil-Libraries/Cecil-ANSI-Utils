@@ -17,7 +17,7 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 		/// Constructs a Color256 from a passed int Shade and a Type, along with overloads for more options.
 		/// </summary>
 		/// <param name="shade">
-		/// A int from 0 to 255, see the README.md for a graphic of ID's.
+		/// A int from 0 to 255.
 		/// </param>
 		/// <param name="type">
 		///     <list type="table">
@@ -103,7 +103,7 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 		/// Constructs a Color256 from a passed int Shade and a Type, along with overloads for more options.
 		/// </summary>
 		/// <param name="shade">
-		/// A int from 0 to 255, see the README.md for a graphic of ID's.
+		/// A int from 0 to 255.
 		/// </param>
 		/// <param name="type">
 		///     <list type="table">
@@ -349,7 +349,7 @@ namespace Cecil_Libraries.ANSI_Utils.Objects
 		/// <summary>
 		/// Get's the Color256 Object with its BaseColor switched out for a different one.
 		/// </summary>
-		/// <param name="shade">The Color in which you want to switch in</param>
+		/// <param name="shade">A int from 0 to 255.</param>
 		/// <returns>The Color Object with the Given color switched in.</returns>
 		/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
 		public Color256 GetColorVariant(int shade)
