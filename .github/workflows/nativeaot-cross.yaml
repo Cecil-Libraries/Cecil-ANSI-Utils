@@ -332,7 +332,7 @@ jobs:
   # --------------------------
   release:
     name: Release Artifacts
-    needs: [ windows-batch, native-linux, native-macos ]
+    needs: [ windows-build, native-linux, native-macos ]
     if: github.event_name == 'release' && github.event.action == 'published'
     runs-on: ubuntu-latest
     steps:
