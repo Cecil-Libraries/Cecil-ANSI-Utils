@@ -1,5 +1,4 @@
-# .github/workflows/nativeaot-cross.yml
-name: NativeAOT Cross-Platform
+name: NativeAOT Cross-Platform Build
 
 on:
   push:
@@ -14,26 +13,171 @@ permissions:
   packages: write
 
 env:
-  OUTPUT_ROOT: GITHUB_RELEASE
+  CS_PROJ: "Cecil ANSI Utils.csproj"
+  NATIVE_PROJ: "Cecil ANSI Utils Native/Cecil ANSI Utils Native.csproj"
+  OUTPUT_ROOT: "GITHUB_RELEASE"
 
 jobs:
-  # --------------------------
-  # Windows batch build
-  # --------------------------
-  windows-batch:
-    name: Windows Batch Build
+  # ---------------------------------------------------------
+  # WINDOWS BUILD (DLLs + NuGet)
+  # ---------------------------------------------------------
+  windows-build:
+    name: Windows Build
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Setup .NET 10.0
+      - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
 
-      - name: Run Windows Build Batch
+      - name: Build and Pack
+        shell: powershell
         run: |
-          call Build.bat Release
+          $CONFIG = "Release"
+          $OUT_DIR = "${{ env.OUTPUT_ROOT }}"
+          New-Item -ItemType Directory -Path "$OUT_DIR\NATIVE", "$OUT_DIR\NET", "$OUT_DIR\NUGET" -Force
+
+          # 1. Build Base Library First (Standard DLL)
+          dotnet build "${{ env.CS_PROJ }}" -c $CONFIG
+
+          # 2. Build NativeAOT Shared Libs
+          [xml]$nativeXml = Get-Content "${{ env.NATIVE_PROJ }}"
+          $TFs = $nativeXml.Project.PropertyGroup.TargetFrameworks -split ';' | Where-Object { $_ }
+          $RIDs = $nativeXml.Project.PropertyGroup.RuntimeIdentifiers -split ';' | Where-Object { $_ -like "win-*" }
+
+          foreach ($tf in $TFs) {
+            foreach ($rid in $RIDs) {
+              $pub = "$OUT_DIR\_tmp\$tf-$rid"
+              # Apply Stripping and Linker optimizations
+              dotnet publish "${{ env.NATIVE_PROJ }}" -c $CONFIG -f $tf -r $rid -o $pub `
+                -p:PublishAot=true `
+                -p:NativeLib=Shared `
+                -p:StripSymbols=true `
+                -p:IlcGenerateStackTraceData=false `
+                -p:RootAllApplicationAssemblies=true
+              
+              copy "Native Core\Cecil_ANSI_Utils.h" "$pub\"
+              Compress-Archive -Path "$pub\*" -DestinationPath "$OUT_DIR\NATIVE\Native-$tf-$rid.zip" -Force
+            }
+          }
+
+          # 3. Pack NuGet
+          dotnet pack "${{ env.CS_PROJ }}" -c $CONFIG -o "$OUT_DIR\NUGET"
+
+      - name: Upload Windows Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-binaries
+          path: ${{ env.OUTPUT_ROOT }}/**/*
+
+  # ---------------------------------------------------------
+  # LINUX BUILD (.so)
+  # ---------------------------------------------------------
+  linux-build:
+    name: Linux Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      
+      - name: Install Native Toolchain Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang zlib1g-dev libicu-dev lld
+
+      - name: Build Native
+        run: |
+          CONFIG="Release"
+          OUT_DIR="${{ env.OUTPUT_ROOT }}"
+          mkdir -p "$OUT_DIR/NATIVE"
+          
+          TFS=$(cat "${{ env.NATIVE_PROJ }}" | sed -n 's/.*<TargetFrameworks>\(.*\)<\/TargetFrameworks>.*/\1/p' | tr ';' ' ')
+          RIDS=$(cat "${{ env.NATIVE_PROJ }}" | sed -n 's/.*<RuntimeIdentifiers>\(.*\)<\/RuntimeIdentifiers>.*/\1/p' | tr ';' '\n' | grep 'linux-' | tr '\n' ' ')
+
+          for tf in $TFS; do
+            for rid in $RIDS; do
+              PUB="$OUT_DIR/_tmp/$tf-$rid"
+              # RootAllApplicationAssemblies=true ensures the linker doesn't strip the NativeAOT startup code
+              dotnet publish "${{ env.NATIVE_PROJ }}" -c $CONFIG -f $tf -r $rid -o "$PUB" \
+                -p:PublishAot=true \
+                -p:NativeLib=Shared \
+                -p:StripSymbols=true \
+                -p:RootAllApplicationAssemblies=true \
+                -p:CppCompilerAndLinker=clang
+              
+              cp "Native Core/Cecil_ANSI_Utils.h" "$PUB/"
+              cd "$PUB" && zip -r "../../NATIVE/Native-$tf-$rid.zip" . && cd -
+            done
+          done
+
+      - name: Upload Linux Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-binaries
+          path: ${{ env.OUTPUT_ROOT }}/NATIVE/*.zip
+
+  # ---------------------------------------------------------
+  # MACOS BUILD (.dylib)
+  # ---------------------------------------------------------
+  macos-build:
+    name: macOS Build
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Build Native
+        run: |
+          CONFIG="Release"
+          OUT_DIR="${{ env.OUTPUT_ROOT }}"
+          mkdir -p "$OUT_DIR/NATIVE"
+          
+          TFS=$(cat "${{ env.NATIVE_PROJ }}" | sed -n 's/.*<TargetFrameworks>\(.*\)<\/TargetFrameworks>.*/\1/p' | tr ';' ' ')
+          RIDS=$(cat "${{ env.NATIVE_PROJ }}" | sed -n 's/.*<RuntimeIdentifiers>\(.*\)<\/RuntimeIdentifiers>.*/\1/p' | tr ';' '\n' | grep 'osx-' | tr '\n' ' ')
+
+          for tf in $TFS; do
+            for rid in $RIDS; do
+              PUB="$OUT_DIR/_tmp/$tf-$rid"
+              # Using StripSymbols and disabling stack trace data for macOS size reduction
+              dotnet publish "${{ env.NATIVE_PROJ }}" -c $CONFIG -f $tf -r $rid -o "$PUB" \
+                -p:PublishAot=true \
+                -p:NativeLib=Shared \
+                -p:StripSymbols=true \
+                -p:IlcGenerateStackTraceData=false \
+                -p:RootAllApplicationAssemblies=true
+                
+              cp "Native Core/Cecil_ANSI_Utils.h" "$PUB/"
+              cd "$PUB" && zip -r "../../NATIVE/Native-$tf-$rid.zip" . && cd -
+            done
+          done
+
+      - name: Upload macOS Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-binaries
+          path: ${{ env.OUTPUT_ROOT }}/NATIVE/*.zip
+
+  # ---------------------------------------------------------
+  # RELEASE
+  # ---------------------------------------------------------
+  publish-release:
+    needs: [windows-build, linux-build, macos-build]
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download All Artifacts
+        uses: actions/download-artifact@v4
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: "**/*.zip"
 
       - name: Upload Windows artifacts
         uses: actions/upload-artifact@v4
