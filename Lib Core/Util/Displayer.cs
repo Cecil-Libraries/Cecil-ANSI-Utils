@@ -76,7 +76,7 @@ namespace Cecil_Libraries.ANSI_Utils.Util
 			Console.ReadLine();
 			Console.WriteLine("Highlighter");
 			i = 0;
-			foreach (string item in ANSICodeLists.HighlighterColorText)
+			foreach (string item in ANSICodeLists.HighlighterColorList)
 			{
 				Console.WriteLine(ANSICodeLists.ResetColor + item + $"Entry {i}" + ANSICodeLists.ResetColor);
 				i++;
@@ -85,7 +85,7 @@ namespace Cecil_Libraries.ANSI_Utils.Util
 			Console.ReadLine();
 			Console.WriteLine("Invisible");
 			i = 0;
-			foreach (string item in ANSICodeLists.InvisibleColorText)
+			foreach (string item in ANSICodeLists.InvisibleColorList)
 			{
 				Console.WriteLine(ANSICodeLists.ResetColor + item + $"Entry {i}" + ANSICodeLists.ResetColor);
 				i++;
@@ -94,7 +94,7 @@ namespace Cecil_Libraries.ANSI_Utils.Util
 			Console.ReadLine();
 			Console.WriteLine("Strikethrough");
 			i = 0;
-			foreach (string item in ANSICodeLists.StrikethroughColorText)
+			foreach (string item in ANSICodeLists.StrikethroughColorList)
 			{
 				Console.WriteLine(ANSICodeLists.ResetColor + item + $"Entry {i}" + ANSICodeLists.ResetColor);
 				i++;
@@ -166,7 +166,7 @@ namespace Cecil_Libraries.ANSI_Utils.Util
 			Console.ReadLine();
 			Console.WriteLine("High Intensity Highlighter");
 			i = 0;
-			foreach (string item in ANSICodeLists.HighIntensityHighlighterColorText)
+			foreach (string item in ANSICodeLists.HighIntensityHighlighterColorList)
 			{
 				Console.WriteLine(ANSICodeLists.ResetColor + item + $"Entry {i}" + ANSICodeLists.ResetColor);
 				i++;
@@ -175,7 +175,7 @@ namespace Cecil_Libraries.ANSI_Utils.Util
 			Console.ReadLine();
 			Console.WriteLine("High Intensity Invisible");
 			i = 0;
-			foreach (string item in ANSICodeLists.HighIntensityInvisibleColorText)
+			foreach (string item in ANSICodeLists.HighIntensityInvisibleColorList)
 			{
 				Console.WriteLine(ANSICodeLists.ResetColor + item + $"Entry {i}" + ANSICodeLists.ResetColor);
 				i++;
@@ -184,7 +184,7 @@ namespace Cecil_Libraries.ANSI_Utils.Util
 			Console.ReadLine();
 			Console.WriteLine("High Intensity Strikethrough");
 			i = 0;
-			foreach (string item in ANSICodeLists.HighIntensityStrikethroughColorText)
+			foreach (string item in ANSICodeLists.HighIntensityStrikethroughColorList)
 			{
 				Console.WriteLine(ANSICodeLists.ResetColor + item + $"Entry {i}" + ANSICodeLists.ResetColor);
 				i++;

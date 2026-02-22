@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;netstandard2.1;netframework4.7.2;netframework4.8;netframework4.8.1;net5.0;net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
-        <RuntimeIdentifiers>win-x64;win-x86;win-arm64;linux-x64;linux-arm;linux-arm64;linux-musl-x64;linux-musl-arm64;osx-x64;osx-arm64;browser-wasm</RuntimeIdentifiers>
+        <RuntimeIdentifiers>win-x64;win-x86;win-arm64;linux-x64;linux-arm;linux-arm64;linux-musl-x64;linux-musl-arm64;osx-x64;osx-arm64</RuntimeIdentifiers>
         <AssemblyName>Cecil ANSI Utils</AssemblyName>
         <Description>A library of ANSI Utilities for the C# Console environment, mainly Color Modes [foreground and background], and Text Processing Modes, also includes RGB Conversions for ColorRGB</Description>
         <Version>2.0.0</Version>
@@ -11,15 +11,7 @@
         <LangVersion>Latest</LangVersion>
         <RootNamespace>ANSI_Utils</RootNamespace>
         <ApplicationIcon>CecilLibsLogo.ico</ApplicationIcon>
-    </PropertyGroup>
-    
-    <PropertyGroup Condition="
-      '$(TargetFramework)' == 'net8.0' Or
-      '$(TargetFramework)' == 'net9.0' Or
-      '$(TargetFramework)' == 'net10.0'">
-
-        <IsAotCompatible>true</IsAotCompatible>
-        <DefineConstants>NATIVE_AOT</DefineConstants>
+        <NoWarn>$(NoWarn);CS0618</NoWarn>
     </PropertyGroup>
 
     <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
@@ -39,7 +31,10 @@
         * Added Defaults for the Color object, less object creation required.
         * Changed the ANSICodeLists from string[] to IReadOnlyList&#60;string&#62;
         * Base Library code is now stored in a `Lib Core` subfolder.
-        * Added NativeAOT support for the Full Library.
+        * Added NativeAOT support for the Full Library. [Present in the .Native DLL]
+        * Fixed a bug where some ANSICodeLists ended with Text instead of List.
+        * Built a proper build tool
+        * Put together a Github Action to Automate release builds [The Ominious 140+ zips]
         </PackageReleaseNotes>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     </PropertyGroup>
@@ -51,7 +46,27 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Native Core\Objects\" />
-      <Folder Include="Native Core\Util\" />
+        <None Remove="Cecil ANSI Utils Native\NuGet.Config" />
+        <None Remove="Cecil ANSI Utils Native\obj\**" />
+        <None Remove="Cecil ANSI Utils Native\bin\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Cecil ANSI Utils Native\obj\**" />
+        <Compile Remove="Cecil ANSI Utils Native\bin\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Remove="Cecil ANSI Utils Native\obj\**" />
+        <EmbeddedResource Remove="Cecil ANSI Utils Native\bin\**" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Compile Remove="Native Core\**\*.cs" />
+        <None Remove="Native Core\**\*.h" />
+        <None Remove="GITHUB RELEASE\**\*.zip" />
+        <None Remove="GITHUB PRERELEASE\**\*.zip" />
+        <None Remove="GITHUB RELEASE\**\*.nupkg" />
+        <None Remove="GITHUB PRERELEASE\**\*.nupkg" />
     </ItemGroup>
 </Project>

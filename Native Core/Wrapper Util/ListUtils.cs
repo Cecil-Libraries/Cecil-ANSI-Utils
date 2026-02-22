@@ -6,8 +6,17 @@ using System.Runtime.InteropServices;
 
 namespace Cecil_Libraries.Native_ANSI_Utils.Wrapper_Util
 {
+    /// <summary>
+    /// ListUtils for NativeAOT List based Systems.
+    /// </summary>
     public class ListUtils
     {
+        /// <summary>
+        /// Initializes a IntPtr array from a List of Strings.
+        /// </summary>
+        /// <param name="list">The list your wishing to initalize</param>
+        /// <returns>The initialized list.</returns>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
         internal static IntPtr[] InitializeList(IReadOnlyList<string> list)
         {
             return list.Select(s => Marshal.StringToHGlobalAnsi(s)).ToArray();
@@ -83,9 +92,9 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Wrapper_Util
         }
 
         /// <summary>
-        /// Frees memory of all the IntPtr arrays passed in.
+        /// Frees memory of the IntPtr array passed in.
         /// </summary>
-        /// <param name="lists">The lists in which should be cleared.</param>
+        /// <param name="listToClear">The list in which should be cleared.</param>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
         internal static void FreeMemorySingular(IntPtr[] listToClear)
         {
@@ -125,16 +134,7 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Wrapper_Util
                     continue;
                 }
                 
-                int TargetLength = parts.listToRestoreTo.Count;
-
-                if (GetListCount(parts.listToRestore) < TargetLength)
-                {
-                    IntPtr[] IntPtrArray = new IntPtr[TargetLength];
-                    Array.Copy(parts.listToRestore, IntPtrArray, GetListCount(parts.listToRestore));
-                    parts.listToRestore = IntPtrArray;
-                }
-                
-                for (int i = 0; i < TargetLength; i++)
+                for (int i = 0; i < Math.Min(parts.listToRestore.Length, parts.listToRestoreTo.Count); i++)
                 {
                     if (parts.listToRestore[i] == IntPtr.Zero)
                     {
@@ -157,16 +157,7 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Wrapper_Util
                 return;
             }
                 
-            int TargetLength = listToRestoreTo.Count;
-
-            if (GetListCount(listToRestore) < TargetLength)
-            {
-                IntPtr[] IntPtrArray = new IntPtr[TargetLength];
-                Array.Copy(listToRestore, IntPtrArray, GetListCount(listToRestore));
-                listToRestore = IntPtrArray;
-            }
-                
-            for (int i = 0; i < TargetLength; i++)
+            for (int i = 0; i < Math.Min(listToRestore.Length, listToRestoreTo.Count); i++)
             {
                 if (listToRestore[i] == IntPtr.Zero)
                 {

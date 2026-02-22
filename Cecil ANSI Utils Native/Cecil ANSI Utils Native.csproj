@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+        <RuntimeIdentifiers>win-x64;win-x86;win-arm64;linux-x64;linux-arm;linux-arm64;linux-musl-x64;linux-musl-arm64;osx-x64;osx-arm64</RuntimeIdentifiers>
+        <PublishAot>true</PublishAot>
+        <NativeLib>Shared</NativeLib>
+        <DefineConstants>NATIVE_AOT</DefineConstants>
+        <IsAotCompatible>true</IsAotCompatible>
+        <AssemblyName>Cecil.ANSI_Utils.Native</AssemblyName>
+        <RootNamespace>Cecil_ANSI_Utils.Native</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Cecil ANSI Utils.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="..\Native Core\**\*.cs" />
+        <Folder Include="..\Native Core\**" />
+        <EmbeddedResource Include="..\Native Core\**\*" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+        <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+    </ItemGroup>
+</Project>

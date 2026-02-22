@@ -56,4 +56,5 @@ obj/
 .git/
 .idea/
 *.user
-*Utils*/
+GITHUB RELEASE/
+GITHUB PRERELEASE/

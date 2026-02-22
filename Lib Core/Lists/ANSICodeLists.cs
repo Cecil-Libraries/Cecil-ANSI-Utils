@@ -63,7 +63,7 @@ namespace Cecil_Libraries.ANSI_Utils.Lists
         /// </summary>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
         [Obsolete("Hey, we are going to recommend you use the Color Object system instead, this code is Obsolete.")]
-        public static readonly IReadOnlyList<string> HighlighterColorText = ["\u001b[7;30m", "\u001b[7;31m", "\u001b[7;32m", "\u001b[7;33m", "\u001b[7;34m", "\u001b[7;35m", "\u001b[7;36m", "\u001b[7;37m"];
+        public static readonly IReadOnlyList<string> HighlighterColorList = ["\u001b[7;30m", "\u001b[7;31m", "\u001b[7;32m", "\u001b[7;33m", "\u001b[7;34m", "\u001b[7;35m", "\u001b[7;36m", "\u001b[7;37m"];
         
         /// <summary>
         /// Applies the color with a Invisible Effect applied.
@@ -71,7 +71,7 @@ namespace Cecil_Libraries.ANSI_Utils.Lists
         /// </summary>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
         [Obsolete("Hey, we are going to recommend you use the Color Object system instead, this code is Obsolete.")]
-        public static readonly IReadOnlyList<string> InvisibleColorText = ["\u001b[8;30m", "\u001b[8;31m", "\u001b[8;32m", "\u001b[8;33m", "\u001b[8;34m", "\u001b[8;35m", "\u001b[8;36m", "\u001b[8;37m"];
+        public static readonly IReadOnlyList<string> InvisibleColorList = ["\u001b[8;30m", "\u001b[8;31m", "\u001b[8;32m", "\u001b[8;33m", "\u001b[8;34m", "\u001b[8;35m", "\u001b[8;36m", "\u001b[8;37m"];
         
         /// <summary>
         /// Applies the color with a Strikethrough Effect applied.
@@ -79,7 +79,7 @@ namespace Cecil_Libraries.ANSI_Utils.Lists
         /// </summary>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
         [Obsolete("Hey, we are going to recommend you use the Color Object system instead, this code is Obsolete.")]
-        public static readonly IReadOnlyList<string> StrikethroughColorText = ["\u001b[9;30m", "\u001b[9;31m", "\u001b[9;32m", "\u001b[9;33m", "\u001b[9;34m", "\u001b[9;35m", "\u001b[9;36m", "\u001b[9;37m"];
+        public static readonly IReadOnlyList<string> StrikethroughColorList = ["\u001b[9;30m", "\u001b[9;31m", "\u001b[9;32m", "\u001b[9;33m", "\u001b[9;34m", "\u001b[9;35m", "\u001b[9;36m", "\u001b[9;37m"];
         
         /// <summary>
         /// Applies the color with to the background of the text.
@@ -151,7 +151,7 @@ namespace Cecil_Libraries.ANSI_Utils.Lists
         /// </summary>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
         [Obsolete("Hey, we are going to recommend you use the Color Object system instead, this code is Obsolete.")]
-        public static readonly IReadOnlyList<string> HighIntensityHighlighterColorText = ["\u001b[7;90m", "\u001b[7;91m", "\u001b[7;92m", "\u001b[7;93m", "\u001b[7;94m", "\u001b[7;95m", "\u001b[7;96m", "\u001b[7;97m"];
+        public static readonly IReadOnlyList<string> HighIntensityHighlighterColorList = ["\u001b[7;90m", "\u001b[7;91m", "\u001b[7;92m", "\u001b[7;93m", "\u001b[7;94m", "\u001b[7;95m", "\u001b[7;96m", "\u001b[7;97m"];
         
         /// <summary>
         /// Applies a High Intensity variant of the color with a Invisible Effect applied.
@@ -159,7 +159,7 @@ namespace Cecil_Libraries.ANSI_Utils.Lists
         /// </summary>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
         [Obsolete("Hey, we are going to recommend you use the Color Object system instead, this code is Obsolete.")]
-        public static readonly IReadOnlyList<string> HighIntensityInvisibleColorText = ["\u001b[8;90m", "\u001b[8;91m", "\u001b[8;92m", "\u001b[8;93m", "\u001b[8;94m", "\u001b[8;95m", "\u001b[8;96m", "\u001b[8;97m"];
+        public static readonly IReadOnlyList<string> HighIntensityInvisibleColorList = ["\u001b[8;90m", "\u001b[8;91m", "\u001b[8;92m", "\u001b[8;93m", "\u001b[8;94m", "\u001b[8;95m", "\u001b[8;96m", "\u001b[8;97m"];
         
         /// <summary>
         /// Applies a High Intensity variant of the color with a Strikethrough Effect applied.
@@ -167,7 +167,7 @@ namespace Cecil_Libraries.ANSI_Utils.Lists
         /// </summary>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
         [Obsolete("Hey, we are going to recommend you use the Color Object system instead, this code is Obsolete.")]
-        public static readonly IReadOnlyList<string> HighIntensityStrikethroughColorText = ["\u001b[9;90m", "\u001b[9;91m", "\u001b[9;92m", "\u001b[9;93m", "\u001b[9;94m", "\u001b[9;95m", "\u001b[9;96m", "\u001b[9;97m"];
+        public static readonly IReadOnlyList<string> HighIntensityStrikethroughColorList = ["\u001b[9;90m", "\u001b[9;91m", "\u001b[9;92m", "\u001b[9;93m", "\u001b[9;94m", "\u001b[9;95m", "\u001b[9;96m", "\u001b[9;97m"];
         
         /// <summary>
         /// Resets Everything Back to Default
@@ -181,5 +181,113 @@ namespace Cecil_Libraries.ANSI_Utils.Lists
         /// Resets Background Color Back to Default
         /// </summary>
         public const string ResetBackground = "\u001b[49m";
+        /// <summary>
+        /// Regular Color mode.
+        /// </summary>
+        public const string RegularMode = "\u001b[0m";
+        /// <summary>
+        /// Bold Color mode.
+        /// </summary>
+        public const string BoldMode = "\u001b[1m";
+        /// <summary>
+        /// Dulled Color mode.
+        /// </summary>
+        public const string DulledMode = "\u001b[2m";
+        /// <summary>
+        /// Italic Color mode.
+        /// </summary>
+        public const string ItalicMode = "\u001b[3m";
+        /// <summary>
+        /// Underlined Color mode.
+        /// </summary>
+        public const string UnderlinedMode = "\u001b[4m";
+        /// <summary>
+        /// Blinking Color mode.
+        /// </summary>
+        public const string BlinkMode = "\u001b[5m";
+        /// <summary>
+        /// Rapidly Blinking Color mode.
+        /// </summary>
+        public const string RapidMode = "\u001b[6m";
+        /// <summary>
+        /// Highlight Color mode.
+        /// </summary>
+        public const string HighlightMode = "\u001b[7m";
+        /// <summary>
+        /// Underlight Color mode.
+        /// </summary>
+        public const string UnderlightMode = "\u001b[8m";
+        /// <summary>
+        /// Strikethrough Color mode.
+        /// </summary>
+        public const string StrikethroughMode = "\u001b[9m";
+        /// <summary>
+        /// Doubleline Color mode.
+        /// </summary>
+        public const string DoublelineMode = "\u001b[21m";
+        /// <summary>
+        /// Overline Color mode.
+        /// </summary>
+        public const string OverlineMode = "\u001b[53m";
+        /// <summary>
+        /// Framed Color mode.
+        /// </summary>
+        public const string FramedMode = "\u001b[51m";
+        /// <summary>
+        /// Encircled Color mode.
+        /// </summary>
+        public const string EncircledMode = "\u001b[52m";
+        /// <summary>
+        /// Reset Bold Color mode.
+        /// </summary>
+        public const string ResetBoldMode = "\u001b[22m";
+        /// <summary>
+        /// Reset Dulled Color mode.
+        /// </summary>
+        public const string ResetDulledMode = "\u001b[22m";
+        /// <summary>
+        /// Reset Italic Color mode.
+        /// </summary>
+        public const string ResetItalicMode = "\u001b[23m";
+        /// <summary>
+        /// Reset Underlined Color mode.
+        /// </summary>
+        public const string ResetUnderlinedMode = "\u001b[24m";
+        /// <summary>
+        /// Reset Blinking Color mode.
+        /// </summary>
+        public const string ResetBlinkMode = "\u001b[25m";
+        /// <summary>
+        /// Reset Rapidly Blinking Color mode.
+        /// </summary>
+        public const string ResetRapidMode = "\u001b[26m";
+        /// <summary>
+        /// Reset Highlight Color mode.
+        /// </summary>
+        public const string ResetHighlightMode = "\u001b[27m";
+        /// <summary>
+        /// Reset Underlight Color mode.
+        /// </summary>
+        public const string ResetUnderlightMode = "\u001b[28m";
+        /// <summary>
+        /// Reset Strikethrough Color mode.
+        /// </summary>
+        public const string ResetStrikethroughMode = "\u001b[29m";
+        /// <summary>
+        /// Reset Doubleline Color mode.
+        /// </summary>
+        public const string ResetDoublelineMode = "\u001b[54m";
+        /// <summary>
+        /// Reset Overline Color mode.
+        /// </summary>
+        public const string ResetOverlineMode = "\u001b[55m";
+        /// <summary>
+        /// Reset Framed Color mode.
+        /// </summary>
+        public const string ResetFramedMode = "\u001b[54m";
+        /// <summary>
+        /// Reset Encircled Color mode.
+        /// </summary>
+        public const string ResetEncircledMode = "\u001b[54m";
 	}
 }
