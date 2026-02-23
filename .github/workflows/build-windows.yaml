@@ -43,6 +43,7 @@ jobs:
       
       - name: Prepare ENV Var
         shell: powershell
+        id: prepare
         run: |
           if (-not $Env:CONFIG) { $Env:CONFIG = "Release" }
 
