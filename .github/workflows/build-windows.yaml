@@ -206,7 +206,7 @@ jobs:
         shell: powershell
         run: |
           Write-Output Packing NuGet package...
-          dotnet publish "$Env:CS_PROJ" -c "$Env:CONFIG" -p:NoWarn=CS0618
+          dotnet build "$Env:CS_PROJ" -c "$Env:CONFIG" -p:NoWarn=CS0618
           try {
             dotnet pack "$Env:CS_PROJ" -c "$Env:CONFIG" -o "$Env:OUTPUT_ROOT_WIN_NUGET" -p:NoWarn=CS0618
           } catch {
