@@ -185,14 +185,18 @@ jobs:
           $rids = $Env:RIDs -split ' '
           foreach ($f in $tfms) {
             foreach ($r in $rids) {
-                $OUT = $Env:OUTPUT_ROOT_WIN_TEMP\$f-$r
+                $OUT = "$Env:OUTPUT_ROOT_WIN_TEMP\$f-$r"
                 if (Test-Path $OUT) { Remove-Item $OUT -Recurse -Force }
                 New-Item -ItemType Directory -Path $OUT -Force | Out-Null
                 Write-Output "Publishing $f / $r"
-                dotnet publish $Env:CS_PROJ -c $Env:CONFIG -f $f -r $r -o $OUT -p:NoWarn=CS0618 || Write-Output Failed $f / $r
+                try {
+                  dotnet publish $Env:CS_PROJ -c $Env:CONFIG -f $f -r $r -o $OUT -p:NoWarn=CS0618 
+                } catch { 
+                  Write-Output Failed $f / $r 
+                }
                 Copy-Item "$Env:README" "$OUT\" -Force
                 Copy-Item "$Env:LICENSE" "$OUT\" -Force
-                $ZIP_OUT = $Env:OUTPUT_ROOT_WIN_NET\$f-$r.zip
+                $ZIP_OUT = "$Env:OUTPUT_ROOT_WIN_NET\$f-$r.zip"
                 Compress-Archive -Path "$OUT\*" -DestinationPath $ZIP_OUT -Force
                 Remove-Item $OUT -Recurse -Force
             }
@@ -203,7 +207,11 @@ jobs:
         run: |
           Write-Output Packing NuGet package...
           dotnet publish "$Env:CS_PROJ" -c "$Env:CONFIG" -p:NoWarn=CS0618
-          dotnet pack "$Env:CS_PROJ" -c "$Env:CONFIG" -o "$Env:OUTPUT_ROOT_WIN_NUGET" -p:NoWarn=CS0618 || Write-Output NuGet pack failed
+          try {
+            dotnet pack "$Env:CS_PROJ" -c "$Env:CONFIG" -o "$Env:OUTPUT_ROOT_WIN_NUGET" -p:NoWarn=CS0618
+          } catch {
+            Write-Output NuGet pack failed
+          }
       - uses: actions/upload-artifact@v4
         with:
           name: net-binaries
@@ -314,11 +322,15 @@ jobs:
           foreach ($f in $tfms) {
             foreach ($r in $rids) {
               if ($r -eq "win-arm64" -or $r -eq "win-x64") {
-                $OUT = $Env:OUTPUT_ROOT_WIN_TEMP\$f-$r
+                $OUT = "$Env:OUTPUT_ROOT_WIN_TEMP\$f-$r"
                 if (Test-Path $OUT) { Remove-Item $OUT -Recurse -Force }
                 New-Item -ItemType Directory -Path $OUT -Force | Out-Null
                 Write-Output "Publishing $f / $r"
-                dotnet publish $Env:NATIVE_PROJ -c $Env:CONFIG -f $f -r $r -o $OUT -p:NoWarn=CS0618 || Write-Output Failed $f / $r
+                try {
+                  dotnet publish $Env:NATIVE_PROJ -c $Env:CONFIG -f $f -r $r -o $OUT -p:NoWarn=CS0618
+                } catch {
+                  Write-Output Failed $f / $r 
+                }
                 Copy-Item "$Env:README" "$OUT\" -Force
                 Copy-Item "$Env:LICENSE" "$OUT\" -Force
                 Copy-Item "$Env:HAT" "$OUT\" -Force
@@ -337,7 +349,7 @@ jobs:
                 }
                 Write-Output ==============================
                 Write-Output.
-                $ZIP_OUT = $Env:OUTPUT_ROOT_WIN_NATIVE\$f-$r.zip
+                $ZIP_OUT = "$Env:OUTPUT_ROOT_WIN_NATIVE\$f-$r.zip"
                 Compress-Archive -Path "$OUT\*" -DestinationPath $ZIP_OUT -Force
                 Remove-Item $OUT -Recurse -Force
               }
