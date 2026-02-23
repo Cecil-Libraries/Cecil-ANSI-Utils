@@ -215,12 +215,12 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: net-binaries
-          path: $Env:OUTPUT_ROOT_WIN_NET/*.zip
+          path: ${{ env.OUTPUT_ROOT_WIN_NET }}/*.zip
 
       - uses: actions/upload-artifact@v4
         with:
           name: nuget-packages
-          path: $Env:OUTPUT_ROOT_WIN_NUGET/*.nupkg
+          path: ${{ env.OUTPUT_ROOT_WIN_NUGET }}/*.nupkg
   # ---------------------------------------------------------
   # |                  WINDOWS (NATIVE)                     |
   # ---------------------------------------------------------
@@ -359,4 +359,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: native-binaries
-          path: $Env:OUTPUT_ROOT_WIN_NATIVE/*.zip
+          path: ${{ env.OUTPUT_ROOT_WIN_NATIVE }}/*.zip
