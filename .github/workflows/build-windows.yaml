@@ -334,21 +334,21 @@ jobs:
                 Copy-Item "$Env:README" "$OUT\" -Force
                 Copy-Item "$Env:LICENSE" "$OUT\" -Force
                 Copy-Item "$Env:HAT" "$OUT\" -Force
-                Write-Output.
+                Write-Output ""
                 Write-Output ==============================
                 Write-Output Native Output Inspection
                 Write-Output Framework: $f
                 Write-Output RID: $r
                 Write-Output ==============================
                 Get-ChildItem $OUT
-                Write-Output.
+                Write-Output ""
                 Write-Output ---- Exported Symbols ----
                 Get-ChildItem "$OUT\*.dll" | ForEach-Object {
                   Write-Output "Inspecting $($_.Name)"
                   dumpbin /EXPORTS $_.FullName
                 }
                 Write-Output ==============================
-                Write-Output.
+                Write-Output ""
                 $ZIP_OUT = "$Env:OUTPUT_ROOT_WIN_NATIVE\$f-$r.zip"
                 Compress-Archive -Path "$OUT\*" -DestinationPath $ZIP_OUT -Force
                 Remove-Item $OUT -Recurse -Force
