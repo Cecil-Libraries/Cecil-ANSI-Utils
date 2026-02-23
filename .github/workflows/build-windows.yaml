@@ -1,0 +1,349 @@
+name: Build Output
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  release:
+    types: [ published ]
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  CS_PROJ: "Cecil ANSI Utils.csproj"
+  NATIVE_PROJ: "Cecil ANSI Utils Native/Cecil ANSI Utils Native.csproj"
+  CONFIG: "Release"
+
+jobs:
+  # ---------------------------------------------------------
+  # |                 WINDOWS SETUP RUNTIME                 |
+  # ---------------------------------------------------------
+  windows-setup:
+    name: Windows Setup
+    runs-on: windows-latest
+    outputs:
+      output-root: ${{ steps.prepare.outputs.output-root }}
+      net-root: ${{ steps.prepare.outputs.net-root }}
+      native-root: ${{ steps.prepare.outputs.native-root }}
+      nuget-root: ${{ steps.prepare.outputs.nuget-root }}
+      temp-root: ${{ steps.prepare.outputs.temp-root }}
+    steps:
+      - uses: actions/checkout@v4
+    
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Install Dumpbin
+        uses: lorenalexm/install-dumpbin-action@main
+      
+      - name: Prepare ENV Var
+        shell: powershell
+        run: |
+          if (-not $Env:CONFIG) { $Env:CONFIG = "Release" }
+
+          if ($Env:CONFIG -ieq "Release") {
+            $OUTPUT_ROOT="GITHUB RELEASE"
+          } else {
+            $OUTPUT_ROOT="GITHUB PRERELEASE"
+          }
+
+          $NUGET_ROOT  = "$OUTPUT_ROOT/NUGET"
+          $NATIVE_ROOT = "$OUTPUT_ROOT/NATIVE"
+          $NET_ROOT    = "$OUTPUT_ROOT/NET"
+          $TEMP_ROOT   = "$OUTPUT_ROOT/TEMP"
+
+          echo "output-root=$OUTPUT_ROOT" >> $Env:GITHUB_OUTPUT
+          echo "net-root=$NET_ROOT" >> $Env:GITHUB_OUTPUT
+          echo "native-root=$NATIVE_ROOT" >> $Env:GITHUB_OUTPUT
+          echo "nuget-root=$NUGET_ROOT" >> $Env:GITHUB_OUTPUT
+          echo "temp-root=$TEMP_ROOT" >> $Env:GITHUB_OUTPUT
+
+  # ---------------------------------------------------------
+  # |                WINDOWS (NET & NUGET)                  |
+  # ---------------------------------------------------------
+  windows-build:
+    needs: windows-setup
+    name: Windows Build
+    runs-on: windows-latest
+    env:
+      OUTPUT_ROOT: ${{ needs.windows-setup.outputs.output-root }}
+      NET_ROOT: ${{ needs.windows-setup.outputs.net-root }}
+      NATIVE_ROOT: ${{ needs.windows-setup.outputs.native-root }}
+      NUGET_ROOT: ${{ needs.windows-setup.outputs.nuget-root }}
+      TEMP_ROOT: ${{ needs.windows-setup.outputs.temp-root }}
+      TFMs: ""
+      RIDs: ""
+      OUTPUT_ROOT_WIN: ""
+      OUTPUT_ROOT_WIN_NUGET: ""
+      OUTPUT_ROOT_WIN_TEMP: ""
+      OUTPUT_ROOT_WIN_NET: ""
+      README: ""
+      LICENSE: ""
+    outputs:
+      output-root-win: ${{ steps.windowize.outputs.output-root-win }}
+      output-root-win-net: ${{ steps.windowize.outputs.output-root-win-net }}
+      output-root-win-native: ${{ steps.windowize.outputs.output-root-win-native }}
+      output-root-win-nuget: ${{ steps.windowize.outputs.output-root-win-nuget }}
+      output-root-win-temp: ${{ steps.windowize.outputs.output-root-win-temp }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Install Dumpbin
+        uses: lorenalexm/install-dumpbin-action@main
+
+      - name: Cleanup
+        shell: powershell
+        run: |
+          if (Test-Path $Env:OUTPUT_ROOT) { 
+            Remove-Item $Env:OUTPUT_ROOT -Recurse -Force 
+          }
+
+          New-Item -ItemType Directory -Path $Env:OUTPUT_ROOT, $Env:NET_ROOT, $Env:NUGET_ROOT, $Env:TEMP_ROOT, $Env:NATIVE_ROOT -Force | Out-Null
+      
+      - name: Windowize the Paths
+        id: windowize
+        shell: powershell
+        run: |
+          $OUTPUT_ROOT_WIN       = $Env:OUTPUT_ROOT
+          $OUTPUT_ROOT_WIN_NUGET = $Env:NUGET_ROOT
+          $OUTPUT_ROOT_WIN_TEMP  = $Env:TEMP_ROOT
+          $OUTPUT_ROOT_WIN_NET   = $Env:NET_ROOT
+          $OUTPUT_ROOT_WIN_NATIVE   = $Env:NATIVE_ROOT
+
+          $OUTPUT_ROOT_WIN       = [System.IO.Path]::GetFullPath($OUTPUT_ROOT_WIN)
+          $OUTPUT_ROOT_WIN_NUGET = [System.IO.Path]::GetFullPath($OUTPUT_ROOT_WIN_NUGET)
+          $OUTPUT_ROOT_WIN_TEMP  = [System.IO.Path]::GetFullPath($OUTPUT_ROOT_WIN_TEMP)
+          $OUTPUT_ROOT_WIN_NET   = [System.IO.Path]::GetFullPath($OUTPUT_ROOT_WIN_NET)
+          $OUTPUT_ROOT_WIN_NATIVE   = [System.IO.Path]::GetFullPath($OUTPUT_ROOT_WIN_NATIVE)
+
+          "OUTPUT_ROOT_WIN=$OUTPUT_ROOT_WIN"             | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+          "OUTPUT_ROOT_WIN_NUGET=$OUTPUT_ROOT_WIN_NUGET" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+          "OUTPUT_ROOT_WIN_TEMP=$OUTPUT_ROOT_WIN_TEMP"   | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+          "OUTPUT_ROOT_WIN_NET=$OUTPUT_ROOT_WIN_NET"     | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+
+          echo "output-root-win=$OUTPUT_ROOT_WIN" >> $Env:GITHUB_OUTPUT
+          echo "output-root-win-net=$OUTPUT_ROOT_WIN_NET" >> $Env:GITHUB_OUTPUT  
+          echo "output-root-win-native=$OUTPUT_ROOT_WIN_NATIVE" >> $Env:GITHUB_OUTPUT
+          echo "output-root-win-nuget=$OUTPUT_ROOT_WIN_NUGET" >> $Env:GITHUB_OUTPUT
+          echo "output-root-win-temp=$OUTPUT_ROOT_WIN_TEMP" >> $Env:GITHUB_OUTPUT
+
+          "README=README.md"   | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+          "LICENSE=LICENSE.md" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+      
+      - name: Get TargetFrameworks
+        shell: powershell
+        run: |
+          $content = Get-Content $Env:CS_PROJ -Raw
+    
+          if ($content -match '<TargetFrameworks>([^<]+)</TargetFrameworks>') {
+            $TFMs = $matches[1] -split ';' | ForEach-Object { $_.Trim() }
+            $tfmList = $TFMs -join ' '
+            "TFMs=$tfmList" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+            Write-Output "Found TFM(s): $tfmList"
+          } else {
+            Write-Output "No TargetFrameworks found in $Env:CS_PROJ"
+          }
+
+      - name: Get Runtime Identifiers
+        shell: powershell
+        run: |
+          $content = Get-Content $Env:CS_PROJ -Raw
+    
+          if ($content -match '<RuntimeIdentifiers>([^<]+)</RuntimeIdentifiers>') {
+            $RIDs = $matches[1] -split ';' | ForEach-Object { $_.Trim() }
+            $ridList = $RIDs -join ' '
+            "RIDs=$ridList" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+            Write-Output "Found RID(s): $ridList"
+          } else {
+            Write-Output "No RuntimeIdentifiers found in $Env:CS_PROJ"
+          }
+      
+      - name: Safty Check RID and TFM
+        shell: powershell
+        run: |
+          if (-not $Env:TFMs) { "TFMs=net10.0" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append }
+          if (-not $Env:RIDs) { "RIDs=win-x64" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append }
+
+      - name: Restore NuGet Packages
+        run: dotnet restore "$Env:CS_PROJ"
+
+      - name: Dotnet BUILD
+        shell: powershell
+        run: |
+          $tfms = $Env:TFMs -split ' '
+          $rids = $Env:RIDs -split ' '
+          foreach ($f in $tfms) {
+            foreach ($r in $rids) {
+                $OUT = $Env:OUTPUT_ROOT_WIN_TEMP\$f-$r
+                if (Test-Path $OUT) { Remove-Item $OUT -Recurse -Force }
+                New-Item -ItemType Directory -Path $OUT -Force | Out-Null
+                Write-Output "Publishing $f / $r"
+                dotnet publish $Env:CS_PROJ -c $Env:CONFIG -f $f -r $r -o $OUT -p:NoWarn=CS0618 || Write-Output Failed $f / $r
+                Copy-Item "$Env:README" "$OUT\" -Force
+                Copy-Item "$Env:LICENSE" "$OUT\" -Force
+                $ZIP_OUT = $Env:OUTPUT_ROOT_WIN_NET\$f-$r.zip
+                Compress-Archive -Path "$OUT\*" -DestinationPath $ZIP_OUT -Force
+                Remove-Item $OUT -Recurse -Force
+            }
+          }
+
+      - name: Pack NUGET
+        shell: powershell
+        run: |
+          Write-Output Packing NuGet package...
+          dotnet publish "$Env:CS_PROJ" -c "$Env:CONFIG" -p:NoWarn=CS0618
+          dotnet pack "$Env:CS_PROJ" -c "$Env:CONFIG" -o "$Env:OUTPUT_ROOT_WIN_NUGET" -p:NoWarn=CS0618 || Write-Output NuGet pack failed
+      - uses: actions/upload-artifact@v4
+        with:
+          name: net-binaries
+          path: $Env:OUTPUT_ROOT_WIN_NET/*.zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nuget-packages
+          path: $Env:OUTPUT_ROOT_WIN_NUGET/*.nupkg
+  # ---------------------------------------------------------
+  # |                  WINDOWS (NATIVE)                     |
+  # ---------------------------------------------------------
+  windows-native:
+    needs: [windows-setup, windows-build]
+    name: Windows Native Build
+    runs-on: windows-latest
+    env:
+      OUTPUT_ROOT: ${{ needs.windows-setup.outputs.output-root }}
+      NET_ROOT: ${{ needs.windows-setup.outputs.net-root }}
+      NATIVE_ROOT: ${{ needs.windows-setup.outputs.native-root }}
+      NUGET_ROOT: ${{ needs.windows-setup.outputs.nuget-root }}
+      TEMP_ROOT: ${{ needs.windows-setup.outputs.temp-root }}
+      TFMs: ""
+      RIDs: ""
+      OUTPUT_ROOT_WIN: ""
+      OUTPUT_ROOT_WIN_NATIVE: ""
+      OUTPUT_ROOT_WIN_TEMP: ""
+      README: ""
+      LICENSE: ""
+      HAT: ""
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Install Dumpbin
+        uses: lorenalexm/install-dumpbin-action@main
+
+      - name: Cleanup
+        shell: powershell
+        run: |
+          if (Test-Path $Env:OUTPUT_ROOT) { 
+            Remove-Item $Env:OUTPUT_ROOT -Recurse -Force 
+          }
+
+          New-Item -ItemType Directory -Path $Env:OUTPUT_ROOT, $Env:NET_ROOT, $Env:NUGET_ROOT, $Env:TEMP_ROOT, $Env:NATIVE_ROOT -Force | Out-Null
+
+      - name: Windowize the Paths
+        shell: powershell
+        run: |
+          $root = "${{ needs.windows-build.outputs.output-root-win }}"
+          $native = "${{ needs.windows-build.outputs.output-root-win-native }}"
+          $temp = "${{ needs.windows-build.outputs.output-root-win-temp }}"
+
+          "OUTPUT_ROOT_WIN=$root"             | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+          "OUTPUT_ROOT_WIN_NATIVE=$native"    | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+          "OUTPUT_ROOT_WIN_TEMP=$temp"        | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+
+          "README=README.md"                   | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+          "LICENSE=LICENSE.md"                 | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+          "HAT=Native Core/Cecil_ANSI_Utils.h" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+      
+      - name: Get TargetFrameworks
+        shell: powershell
+        run: |
+          $content = Get-Content $Env:NATIVE_PROJ -Raw
+    
+          if ($content -match '<TargetFrameworks>([^<]+)</TargetFrameworks>') {
+            $TFMs = $matches[1] -split ';' | ForEach-Object { $_.Trim() }
+            $tfmList = $TFMs -join ' '
+            "TFMs=$tfmList" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+            Write-Output "Found TFM(s): $tfmList"
+          } else {
+            Write-Output "No TargetFrameworks found in $Env:NATIVE_PROJ"
+          }
+
+      - name: Get Runtime Identifiers
+        shell: powershell
+        run: |
+          $content = Get-Content $Env:NATIVE_PROJ -Raw
+    
+          if ($content -match '<RuntimeIdentifiers>([^<]+)</RuntimeIdentifiers>') {
+            $RIDs = $matches[1] -split ';' | ForEach-Object { $_.Trim() }
+            $ridList = $RIDs -join ' '
+            "RIDs=$ridList" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+            Write-Output "Found RID(s): $ridList"
+          } else {
+            Write-Output "No RuntimeIdentifiers found in $Env:NATIVE_PROJ"
+          }
+      
+      - name: Safty Check RID and TFM
+        shell: powershell
+        run: |
+          if (-not $Env:TFMs) { "TFMs=net10.0" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append }
+          if (-not $Env:RIDs) { "RIDs=win-x64" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append }
+
+      - name: Restore NuGet Packages
+        run: dotnet restore "$Env:NATIVE_PROJ"
+
+      - name: DotNet Build
+        shell: powershell
+        run: |
+          $tfms = $Env:TFMs -split ' '
+          $rids = $Env:RIDs -split ' '
+          foreach ($f in $tfms) {
+            foreach ($r in $rids) {
+              if ($r -eq "win-arm64" -or $r -eq "win-x64") {
+                $OUT = $Env:OUTPUT_ROOT_WIN_TEMP\$f-$r
+                if (Test-Path $OUT) { Remove-Item $OUT -Recurse -Force }
+                New-Item -ItemType Directory -Path $OUT -Force | Out-Null
+                Write-Output "Publishing $f / $r"
+                dotnet publish $Env:NATIVE_PROJ -c $Env:CONFIG -f $f -r $r -o $OUT -p:NoWarn=CS0618 || Write-Output Failed $f / $r
+                Copy-Item "$Env:README" "$OUT\" -Force
+                Copy-Item "$Env:LICENSE" "$OUT\" -Force
+                Copy-Item "$Env:HAT" "$OUT\" -Force
+                Write-Output.
+                Write-Output ==============================
+                Write-Output Native Output Inspection
+                Write-Output Framework: $f
+                Write-Output RID: $r
+                Write-Output ==============================
+                Get-ChildItem $OUT
+                Write-Output.
+                Write-Output ---- Exported Symbols ----
+                Get-ChildItem "$OUT\*.dll" | ForEach-Object {
+                  Write-Output "Inspecting $($_.Name)"
+                  dumpbin /EXPORTS $_.FullName
+                }
+                Write-Output ==============================
+                Write-Output.
+                $ZIP_OUT = $Env:OUTPUT_ROOT_WIN_NATIVE\$f-$r.zip
+                Compress-Archive -Path "$OUT\*" -DestinationPath $ZIP_OUT -Force
+                Remove-Item $OUT -Recurse -Force
+              }
+            }
+          }
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: native-binaries
+          path: $Env:OUTPUT_ROOT_WIN_NATIVE/*.zip
