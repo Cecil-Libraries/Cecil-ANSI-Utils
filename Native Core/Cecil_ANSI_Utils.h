@@ -264,6 +264,106 @@ extern "C" {
     // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
     void ANSICodeLists_BackgroundColorList_RestoreMemory();
     
+    // Summary; Gets the length from HighIntensityBackgroundColorList.
+    // Returns; The length of the array</returns>
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityBackgroundColorList_Count();
+    
+    // Summary; Gets the color from HighIntensityBackgroundColorList at the given Index.
+    // Param (Index); The Index in which you want to get the color from.
+    // Returns; The Color at the given index, if the index is out of bounds or if the memory has been cleared we return NULL.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    const char* ANSICodeLists_HighIntensityBackgroundColorList_Get(int index);
+    
+    // Summary; Finds the Index of the given Color within the HighIntensityBackgroundColorList.
+    // Params (Color); The color in which we need to find the index of.
+    // Returns; The index of the color, if we can't find one we return -1
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityBackgroundColorList_FindColorIndex(const char* color);
+    
+    // Summary; Clears the memory of the HighIntensityBackgroundColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityBackgroundColorList_FreeMemory();
+    
+    // Summary; Restores the memory of the HighIntensityBackgroundColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityBackgroundColorList_RestoreMemory();
+    
+    // Summary; Gets the length from HighIntensityColorList.
+    // Returns; The length of the array</returns>
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityColorList_Count();
+    
+    // Summary; Gets the color from HighIntensityColorList at the given Index.
+    // Param (Index); The Index in which you want to get the color from.
+    // Returns; The Color at the given index, if the index is out of bounds or if the memory has been cleared we return NULL.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    const char* ANSICodeLists_HighIntensityColorList_Get(int index);
+    
+    // Summary; Finds the Index of the given Color within the HighIntensityColorList.
+    // Params (Color); The color in which we need to find the index of.
+    // Returns; The index of the color, if we can't find one we return -1
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityColorList_FindColorIndex(const char* color);
+    
+    // Summary; Gets the length from HighIntensityBoldColorList.
+    // Returns; The length of the array</returns>
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityBoldColorList_Count();
+    
+    // Summary; Gets the color from HighIntensityBoldColorList at the given Index.
+    // Param (Index); The Index in which you want to get the color from.
+    // Returns; The Color at the given index, if the index is out of bounds or if the memory has been cleared we return NULL.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    const char* ANSICodeLists_HighIntensityBoldColorList_Get(int index);
+    
+    // Summary; Finds the Index of the given Color within the HighIntensityBoldColorList.
+    // Params (Color); The color in which we need to find the index of.
+    // Returns; The index of the color, if we can't find one we return -1
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityBoldColorList_FindColorIndex(const char* color);
+    
+    // Summary; Clears the memory of the HighIntensityBoldColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityBoldColorList_FreeMemory();
+    
+    // Summary; Restores the memory of the HighIntensityBoldColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityBoldColorList_RestoreMemory();
+    
+    // Summary; Clears the memory of the HighIntensityColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityColorList_FreeMemory();
+    
+    // Summary; Restores the memory of the HighIntensityColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityColorList_RestoreMemory();
+    
+    // Summary; Gets the length from HighIntensityDarkenedColorList.
+    // Returns; The length of the array</returns>
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityDarkenedColorList_Count();
+    
+    // Summary; Gets the color from HighIntensityDarkenedColorList at the given Index.
+    // Param (Index); The Index in which you want to get the color from.
+    // Returns; The Color at the given index, if the index is out of bounds or if the memory has been cleared we return NULL.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    const char* ANSICodeLists_HighIntensityDarkenedColorList_Get(int index);
+    
+    // Summary; Finds the Index of the given Color within the HighIntensityDarkenedColorList.
+    // Params (Color); The color in which we need to find the index of.
+    // Returns; The index of the color, if we can't find one we return -1
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityDarkenedColorList_FindColorIndex(const char* color);
+    
+    // Summary; Clears the memory of the HighIntensityDarkenedColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityDarkenedColorList_FreeMemory();
+    
+    // Summary; Restores the memory of the HighIntensityDarkenedColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityDarkenedColorList_RestoreMemory();
+    
     // Summary; Clears the memory of all IntPtr arrays.
     // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
     void ANSICodeLists_FreeMemory();

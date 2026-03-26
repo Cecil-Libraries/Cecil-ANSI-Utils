@@ -556,6 +556,208 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Lists
         public static void RestoreBackgroundColorListPointersMemory() => ListUtils.RestoreMemorySingular(BackgroundColorListPointers, ANSICodeLists.BackgroundColorList);
         
         // End BackgroundColorList
+        
+        // Start HighIntensityBackgroundColorList
+                
+        /// <summary>
+        /// The Pointer variant of ANSICodeLists.HighIntensityBackgroundColorList
+        /// </summary>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        public static readonly IntPtr[] HighIntensityBackgroundColorListPointers = ListUtils.InitializeList(ANSICodeLists.HighIntensityBackgroundColorList);
+        
+        /// <summary>
+        /// Gets the length from HighIntensityBackgroundColorList.
+        /// </summary>
+        /// <returns>The length of the array</returns>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityBackgroundColorList_Count")]
+        public static int GetHighIntensityBackgroundColorListCount() => ListUtils.GetListCount(HighIntensityBackgroundColorListPointers);
+        
+        /// <summary>
+        /// Gets the color from HighIntensityBackgroundColorList at the given Index.
+        /// </summary>
+        /// <param name="index">The Index in which you want to get the color from.</param>
+        /// <returns>The Color at the given index, if the index is out of bound we return IntPtr.Zero.</returns>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityBackgroundColorList_Get")]
+        public static IntPtr GetHighIntensityBackgroundColor(int index) => ListUtils.GetItem(HighIntensityBackgroundColorListPointers, index);
+        
+        /// <summary>
+        /// Finds the Index of the given Color within the HighIntensityBackgroundColorList.
+        /// </summary>
+        /// <param name="color">The color in which we need to find the index of.</param>
+        /// <returns>The index of the color, if we can't find one we return -1</returns>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityBackgroundColorList_FindColorIndex")]
+        public static int FindHighIntensityBackgroundColorIndex(IntPtr color) => ListUtils.GetItemIndex(HighIntensityBackgroundColorListPointers, color);
+        
+        /// <summary>
+        /// Clears the memory of the HighIntensityBackgroundColorList.
+        /// </summary>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityBackgroundColorList_FreeMemory")]
+        public static void ClearHighIntensityBackgroundColorListPointersMemory() => ListUtils.FreeMemorySingular(HighIntensityBackgroundColorListPointers);
+        
+        /// <summary>
+        /// Restores the memory of the HighIntensityBackgroundColorList.
+        /// </summary>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityBackgroundColorList_RestoreMemory")]
+        public static void RestoreHighIntensityBackgroundColorListPointersMemory() => ListUtils.RestoreMemorySingular(HighIntensityBackgroundColorListPointers, ANSICodeLists.HighIntensityBackgroundColorList);
+        
+        // End HighIntensityBackgroundColorList
+        
+        // Start HighIntensityColorList
+                
+        /// <summary>
+        /// The Pointer variant of ANSICodeLists.HighIntensityColorList
+        /// </summary>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        public static readonly IntPtr[] HighIntensityColorListPointers = ListUtils.InitializeList(ANSICodeLists.HighIntensityColorList);
+        
+        /// <summary>
+        /// Gets the length from HighIntensityColorList.
+        /// </summary>
+        /// <returns>The length of the array</returns>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityColorList_Count")]
+        public static int GetHighIntensityColorListCount() => ListUtils.GetListCount(HighIntensityColorListPointers);
+        
+        /// <summary>
+        /// Gets the color from HighIntensityColorList at the given Index.
+        /// </summary>
+        /// <param name="index">The Index in which you want to get the color from.</param>
+        /// <returns>The Color at the given index, if the index is out of bound we return IntPtr.Zero.</returns>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityColorList_Get")]
+        public static IntPtr GetHighIntensityColor(int index) => ListUtils.GetItem(HighIntensityColorListPointers, index);
+        
+        /// <summary>
+        /// Finds the Index of the given Color within the HighIntensityColorList.
+        /// </summary>
+        /// <param name="color">The color in which we need to find the index of.</param>
+        /// <returns>The index of the color, if we can't find one we return -1</returns>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityColorList_FindColorIndex")]
+        public static int FindHighIntensityColorIndex(IntPtr color) => ListUtils.GetItemIndex(HighIntensityColorListPointers, color);
+        
+        /// <summary>
+        /// Clears the memory of the HighIntensityColorList.
+        /// </summary>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityColorList_FreeMemory")]
+        public static void ClearHighIntensityColorListPointersMemory() => ListUtils.FreeMemorySingular(HighIntensityColorListPointers);
+        
+        /// <summary>
+        /// Restores the memory of the HighIntensityColorList.
+        /// </summary>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityColorList_RestoreMemory")]
+        public static void RestoreHighIntensityColorListPointersMemory() => ListUtils.RestoreMemorySingular(HighIntensityColorListPointers, ANSICodeLists.HighIntensityColorList);
+        
+        // End HighIntensityColorList
+
+        // Start HighIntensityBoldColorList
+                
+        /// <summary>
+        /// The Pointer variant of ANSICodeLists.HighIntensityBoldColorList
+        /// </summary>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        public static readonly IntPtr[] HighIntensityBoldColorListPointers = ListUtils.InitializeList(ANSICodeLists.HighIntensityBoldColorList);
+        
+        /// <summary>
+        /// Gets the length from HighIntensityBoldColorList.
+        /// </summary>
+        /// <returns>The length of the array</returns>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityBoldColorList_Count")]
+        public static int GetHighIntensityBoldColorListCount() => ListUtils.GetListCount(HighIntensityBoldColorListPointers);
+        
+        /// <summary>
+        /// Gets the color from HighIntensityBoldColorList at the given Index.
+        /// </summary>
+        /// <param name="index">The Index in which you want to get the color from.</param>
+        /// <returns>The Color at the given index, if the index is out of bound we return IntPtr.Zero.</returns>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityBoldColorList_Get")]
+        public static IntPtr GetHighIntensityBoldColor(int index) => ListUtils.GetItem(HighIntensityBoldColorListPointers, index);
+        
+        /// <summary>
+        /// Finds the Index of the given Color within the HighIntensityBoldColorList.
+        /// </summary>
+        /// <param name="color">The color in which we need to find the index of.</param>
+        /// <returns>The index of the color, if we can't find one we return -1</returns>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityBoldColorList_FindColorIndex")]
+        public static int FindHighIntensityBoldColorIndex(IntPtr color) => ListUtils.GetItemIndex(HighIntensityBoldColorListPointers, color);
+        
+        /// <summary>
+        /// Clears the memory of the HighIntensityBoldColorList.
+        /// </summary>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityBoldColorList_FreeMemory")]
+        public static void ClearHighIntensityBoldColorListPointersMemory() => ListUtils.FreeMemorySingular(HighIntensityBoldColorListPointers);
+        
+        /// <summary>
+        /// Restores the memory of the HighIntensityBoldColorList.
+        /// </summary>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityBoldColorList_RestoreMemory")]
+        public static void RestoreHighIntensityBoldColorListPointersMemory() => ListUtils.RestoreMemorySingular(HighIntensityBoldColorListPointers, ANSICodeLists.HighIntensityBoldColorList);
+        
+        // End HighIntensityBoldColorList
+
+        // Start HighIntensityDarkenedColorList
+                
+        /// <summary>
+        /// The Pointer variant of ANSICodeLists.HighIntensityDarkenedColorList
+        /// </summary>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        public static readonly IntPtr[] HighIntensityDarkenedColorListPointers = ListUtils.InitializeList(ANSICodeLists.HighIntensityDarkenedColorList);
+        
+        /// <summary>
+        /// Gets the length from HighIntensityDarkenedColorList.
+        /// </summary>
+        /// <returns>The length of the array</returns>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityDarkenedColorList_Count")]
+        public static int GetHighIntensityDarkenedColorListCount() => ListUtils.GetListCount(HighIntensityDarkenedColorListPointers);
+        
+        /// <summary>
+        /// Gets the color from HighIntensityDarkenedColorList at the given Index.
+        /// </summary>
+        /// <param name="index">The Index in which you want to get the color from.</param>
+        /// <returns>The Color at the given index, if the index is out of bound we return IntPtr.Zero.</returns>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityDarkenedColorList_Get")]
+        public static IntPtr GetHighIntensityDarkenedColor(int index) => ListUtils.GetItem(HighIntensityDarkenedColorListPointers, index);
+        
+        /// <summary>
+        /// Finds the Index of the given Color within the HighIntensityDarkenedColorList.
+        /// </summary>
+        /// <param name="color">The color in which we need to find the index of.</param>
+        /// <returns>The index of the color, if we can't find one we return -1</returns>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityDarkenedColorList_FindColorIndex")]
+        public static int FindHighIntensityDarkenedColorIndex(IntPtr color) => ListUtils.GetItemIndex(HighIntensityDarkenedColorListPointers, color);
+        
+        /// <summary>
+        /// Clears the memory of the HighIntensityDarkenedColorList.
+        /// </summary>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityDarkenedColorList_FreeMemory")]
+        public static void ClearHighIntensityDarkenedColorListPointersMemory() => ListUtils.FreeMemorySingular(HighIntensityDarkenedColorListPointers);
+        
+        /// <summary>
+        /// Restores the memory of the HighIntensityDarkenedColorList.
+        /// </summary>
+        /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
+        [UnmanagedCallersOnly(EntryPoint = "ANSICodeLists_HighIntensityDarkenedColorList_RestoreMemory")]
+        public static void RestoreHighIntensityDarkenedColorListPointersMemory() => ListUtils.RestoreMemorySingular(HighIntensityDarkenedColorListPointers, ANSICodeLists.HighIntensityDarkenedColorList);
+        
+        // End HighIntensityDarkenedColorList
+
+        
 
         /// <summary>
         /// Clears the memory of all IntPtr arrays.
@@ -572,7 +774,10 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Lists
             HighlighterColorListPointers,
             InvisibleColorListPointers,
             StrikethroughColorListPointers,
-            BackgroundColorListPointers
+            BackgroundColorListPointers,
+            HighIntensityBackgroundColorListPointers,
+            HighIntensityColorListPointers,
+            HighIntensityBoldColorListPointers
             );
         
         /// <summary>
@@ -620,6 +825,18 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Lists
         {
             listToRestore = BackgroundColorListPointers,
             listToRestoreTo = ANSICodeLists.BackgroundColorList
+        }, new ListUtils.restoreParts
+        {
+            listToRestore = HighIntensityBackgroundColorListPointers,
+            listToRestoreTo = ANSICodeLists.HighIntensityBackgroundColorList
+        }, new ListUtils.restoreParts
+        {
+            listToRestore = HighIntensityColorListPointers,
+            listToRestoreTo = ANSICodeLists.HighIntensityColorList
+        }, new ListUtils.restoreParts
+        {
+            listToRestore = HighIntensityBoldColorListPointers,
+            listToRestoreTo = ANSICodeLists.HighIntensityBoldColorList
         });
     }
 }

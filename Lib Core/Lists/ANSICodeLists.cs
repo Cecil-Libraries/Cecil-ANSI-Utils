@@ -95,7 +95,7 @@ namespace Cecil_Libraries.ANSI_Utils.Lists
         /// </summary>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
         [Obsolete("Hey, we are going to recommend you use the Color Object system instead, this code is Obsolete.")]
-        public static readonly IReadOnlyList<string> HighInstensityBackgroundColorList = ["\u001b[0;100m", "\u001b[0;101m", "\u001b[0;102m", "\u001b[0;103m", "\u001b[0;104m", "\u001b[0;105m", "\u001b[0;106m", "\u001b[0;107m"];
+        public static readonly IReadOnlyList<string> HighIntensityBackgroundColorList = ["\u001b[0;100m", "\u001b[0;101m", "\u001b[0;102m", "\u001b[0;103m", "\u001b[0;104m", "\u001b[0;105m", "\u001b[0;106m", "\u001b[0;107m"];
         
         /// <summary>
         /// Applies a High Intensity variant of the color.

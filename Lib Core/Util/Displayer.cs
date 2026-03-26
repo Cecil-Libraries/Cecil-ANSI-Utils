@@ -193,7 +193,7 @@ namespace Cecil_Libraries.ANSI_Utils.Util
 			Console.ReadLine();
 			Console.WriteLine("High Intensity Background");
 			i = 0;
-			foreach (string item in ANSICodeLists.HighInstensityBackgroundColorList)
+			foreach (string item in ANSICodeLists.HighIntensityBackgroundColorList)
 			{
 				Console.WriteLine(ANSICodeLists.ResetColor + item + $"Entry {i}" + ANSICodeLists.ResetColor);
 				i++;
