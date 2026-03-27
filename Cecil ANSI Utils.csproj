@@ -35,6 +35,8 @@
         * Fixed a bug where some ANSICodeLists ended with Text instead of List.
         * Built a proper build tool
         * Put together a Github Action to Automate release builds [The Ominious 140+ zips]
+        * HighInstensity -> HighIntensity
+        * Fix HighIntensityItalicColorList to actually be Italic instead of Strikethrough.
         </PackageReleaseNotes>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     </PropertyGroup>

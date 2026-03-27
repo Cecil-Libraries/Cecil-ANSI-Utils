@@ -1,5 +1,5 @@
 ﻿#ifndef CECIL_ANSI_H
-#define CECIL_ANSI_H
+#define CECIL_ANSI_H  // NOLINT(clang-diagnostic-unused-macros)
 
 #ifdef __cplusplus
 extern "C" {
@@ -363,6 +363,156 @@ extern "C" {
     // Summary; Restores the memory of the HighIntensityDarkenedColorList.
     // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
     void ANSICodeLists_HighIntensityDarkenedColorList_RestoreMemory();
+    
+    // Summary; Gets the length from HighIntensityItalicColorList.
+    // Returns; The length of the array</returns>
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityItalicColorList_Count();
+    
+    // Summary; Gets the color from HighIntensityItalicColorList at the given Index.
+    // Param (Index); The Index in which you want to get the color from.
+    // Returns; The Color at the given index, if the index is out of bounds or if the memory has been cleared we return NULL.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    const char* ANSICodeLists_HighIntensityItalicColorList_Get(int index);
+    
+    // Summary; Finds the Index of the given Color within the HighIntensityItalicColorList.
+    // Params (Color); The color in which we need to find the index of.
+    // Returns; The index of the color, if we can't find one we return -1
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityItalicColorList_FindColorIndex(const char* color);
+    
+    // Summary; Clears the memory of the HighIntensityItalicColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityItalicColorList_FreeMemory();
+    
+    // Summary; Restores the memory of the HighIntensityItalicColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityItalicColorList_RestoreMemory();
+    
+    // Summary; Gets the length from HighIntensityUnderlineColorList.
+    // Returns; The length of the array</returns>
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityUnderlineColorList_Count();
+    
+    // Summary; Gets the color from HighIntensityUnderlineColorList at the given Index.
+    // Param (Index); The Index in which you want to get the color from.
+    // Returns; The Color at the given index, if the index is out of bounds or if the memory has been cleared we return NULL.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    const char* ANSICodeLists_HighIntensityUnderlineColorList_Get(int index);
+    
+    // Summary; Finds the Index of the given Color within the HighIntensityUnderlineColorList.
+    // Params (Color); The color in which we need to find the index of.
+    // Returns; The index of the color, if we can't find one we return -1
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityUnderlineColorList_FindColorIndex(const char* color);
+    
+    // Summary; Clears the memory of the HighIntensityUnderlineColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityUnderlineColorList_FreeMemory();
+    
+    // Summary; Restores the memory of the HighIntensityUnderlineColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityUnderlineColorList_RestoreMemory();
+    
+    // Summary; Gets the length from HighIntensityFlashyColorList.
+    // Returns; The length of the array</returns>
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityFlashyColorList_Count();
+    
+    // Summary; Gets the color from HighIntensityFlashyColorList at the given Index.
+    // Param (Index); The Index in which you want to get the color from.
+    // Returns; The Color at the given index, if the index is out of bounds or if the memory has been cleared we return NULL.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    const char* ANSICodeLists_HighIntensityFlashyColorList_Get(int index);
+    
+    // Summary; Finds the Index of the given Color within the HighIntensityFlashyColorList.
+    // Params (Color); The color in which we need to find the index of.
+    // Returns; The index of the color, if we can't find one we return -1
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityFlashyColorList_FindColorIndex(const char* color);
+    
+    // Summary; Clears the memory of the HighIntensityFlashyColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityFlashyColorList_FreeMemory();
+    
+    // Summary; Restores the memory of the HighIntensityFlashyColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityFlashyColorList_RestoreMemory();
+    
+    // Summary; Gets the length from HighIntensityHighlighterColorList.
+    // Returns; The length of the array</returns>
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityHighlighterColorList_Count();
+    
+    // Summary; Gets the color from HighIntensityHighlighterColorList at the given Index.
+    // Param (Index); The Index in which you want to get the color from.
+    // Returns; The Color at the given index, if the index is out of bounds or if the memory has been cleared we return NULL.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    const char* ANSICodeLists_HighIntensityHighlighterColorList_Get(int index);
+    
+    // Summary; Finds the Index of the given Color within the HighIntensityHighlighterColorList.
+    // Params (Color); The color in which we need to find the index of.
+    // Returns; The index of the color, if we can't find one we return -1
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityHighlighterColorList_FindColorIndex(const char* color);
+    
+    // Summary; Clears the memory of the HighIntensityHighlighterColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityHighlighterColorList_FreeMemory();
+    
+    // Summary; Restores the memory of the HighIntensityHighlighterColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityHighlighterColorList_RestoreMemory();
+    
+    // Summary; Gets the length from HighIntensityInvisibleColorList.
+    // Returns; The length of the array</returns>
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityInvisibleColorList_Count();
+    
+    // Summary; Gets the color from HighIntensityInvisibleColorList at the given Index.
+    // Param (Index); The Index in which you want to get the color from.
+    // Returns; The Color at the given index, if the index is out of bounds or if the memory has been cleared we return NULL.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    const char* ANSICodeLists_HighIntensityInvisibleColorList_Get(int index);
+    
+    // Summary; Finds the Index of the given Color within the HighIntensityInvisibleColorList.
+    // Params (Color); The color in which we need to find the index of.
+    // Returns; The index of the color, if we can't find one we return -1
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityInvisibleColorList_FindColorIndex(const char* color);
+    
+    // Summary; Clears the memory of the HighIntensityInvisibleColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityInvisibleColorList_FreeMemory();
+    
+    // Summary; Restores the memory of the HighIntensityInvisibleColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityInvisibleColorList_RestoreMemory();
+    
+    // Summary; Gets the length from HighIntensityStrikethroughColorList.
+    // Returns; The length of the array</returns>
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityStrikethroughColorList_Count();
+    
+    // Summary; Gets the color from HighIntensityStrikethroughColorList at the given Index.
+    // Param (Index); The Index in which you want to get the color from.
+    // Returns; The Color at the given index, if the index is out of bounds or if the memory has been cleared we return NULL.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    const char* ANSICodeLists_HighIntensityStrikethroughColorList_Get(int index);
+    
+    // Summary; Finds the Index of the given Color within the HighIntensityStrikethroughColorList.
+    // Params (Color); The color in which we need to find the index of.
+    // Returns; The index of the color, if we can't find one we return -1
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    int ANSICodeLists_HighIntensityStrikethroughColorList_FindColorIndex(const char* color);
+    
+    // Summary; Clears the memory of the HighIntensityStrikethroughColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityStrikethroughColorList_FreeMemory();
+    
+    // Summary; Restores the memory of the HighIntensityStrikethroughColorList.
+    // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
+    void ANSICodeLists_HighIntensityStrikethroughColorList_RestoreMemory();
     
     // Summary; Clears the memory of all IntPtr arrays.
     // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.

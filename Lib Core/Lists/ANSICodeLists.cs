@@ -127,7 +127,7 @@ namespace Cecil_Libraries.ANSI_Utils.Lists
         /// </summary>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
         [Obsolete("Hey, we are going to recommend you use the Color Object system instead, this code is Obsolete.")]
-        public static readonly IReadOnlyList<string> HighIntensityItalicColorList = ["\u001b[9;90m", "\u001b[9;91m", "\u001b[9;92m", "\u001b[9;93m", "\u001b[9;94m", "\u001b[9;95m", "\u001b[9;96m", "\u001b[9;97m"];
+        public static readonly IReadOnlyList<string> HighIntensityItalicColorList = ["\u001b[3;90m", "\u001b[3;91m", "\u001b[3;92m", "\u001b[3;93m", "\u001b[3;94m", "\u001b[3;95m", "\u001b[3;96m", "\u001b[3;97m"];
         
         /// <summary>
         /// Applies a High Intensity variant of the color with a Underlined Effect applied.

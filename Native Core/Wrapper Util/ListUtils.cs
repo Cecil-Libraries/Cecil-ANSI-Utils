@@ -59,14 +59,7 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Wrapper_Util
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
         internal static int GetItemIndex(IntPtr[] list, IntPtr item)
         {
-            for (int i = 0; i < GetListCount(list); i++)
-            {
-                if (GetItem(list, i) == item)
-                {
-                    return i;
-                }
-            }
-            return -1;
+            return Array.IndexOf(list, item);
         }
 
         /// <summary>
