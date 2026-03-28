@@ -275,7 +275,7 @@ jobs:
 
           "README=README.md"                   | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
           "LICENSE=LICENSE.md"                 | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
-          "HAT=Native Core/Cecil_ANSI_Utils.h" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+          "HAT=Cecil ANSI Utils Native/Hats" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
       
       - name: Get TargetFrameworks
         shell: powershell
@@ -333,7 +333,7 @@ jobs:
                 }
                 Copy-Item "$Env:README" "$OUT\" -Force
                 Copy-Item "$Env:LICENSE" "$OUT\" -Force
-                Copy-Item "$Env:HAT" "$OUT\" -Force
+                Copy-Item "$Env:HAT" "$OUT\Hats" -Recurse -Force
                 Write-Output ""
                 Write-Output ==============================
                 Write-Output Native Output Inspection
@@ -343,7 +343,7 @@ jobs:
                 Get-ChildItem $OUT
                 Write-Output ""
                 Write-Output ---- Exported Symbols ----
-                Get-ChildItem "$OUT\*.dll" | ForEach-Object {
+                Get-ChildItem "$OUT\*.dll","$OUT\*.exe" | ForEach-Object {
                   Write-Output "Inspecting $($_.Name)"
                   dumpbin /EXPORTS $_.FullName
                 }
