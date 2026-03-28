@@ -51,16 +51,19 @@
         <None Remove="Cecil ANSI Utils Native\NuGet.Config" />
         <None Remove="Cecil ANSI Utils Native\obj\**" />
         <None Remove="Cecil ANSI Utils Native\bin\**" />
+        <None Remove="Cecil ANSI Utils Native\Hats\**" />
     </ItemGroup>
 
     <ItemGroup>
         <Compile Remove="Cecil ANSI Utils Native\obj\**" />
         <Compile Remove="Cecil ANSI Utils Native\bin\**" />
+        <Compile Remove="Cecil ANSI Utils Native\Hats\**" />
     </ItemGroup>
 
     <ItemGroup>
         <EmbeddedResource Remove="Cecil ANSI Utils Native\obj\**" />
         <EmbeddedResource Remove="Cecil ANSI Utils Native\bin\**" />
+        <EmbeddedResource Remove="Cecil ANSI Utils Native\Hats\**" />
     </ItemGroup>
     
     <ItemGroup>
@@ -70,5 +73,7 @@
         <None Remove="GITHUB PRERELEASE\**\*.zip" />
         <None Remove="GITHUB RELEASE\**\*.nupkg" />
         <None Remove="GITHUB PRERELEASE\**\*.nupkg" />
+        <None Remove="GITHUB RELEASE\**\*" />
+        <None Remove="GITHUB PRERELEASE\**\*" />
     </ItemGroup>
 </Project>

@@ -18,6 +18,7 @@
         <Compile Include="..\Native Core\**\*.cs" />
         <Folder Include="..\Native Core\**" />
         <EmbeddedResource Include="..\Native Core\**\*" />
+        <Compile Include="..\Native Core\Lists\StringWrappers\*.cs" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">

@@ -1,7 +1,9 @@
 ﻿#if NATIVE_AOT
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace Cecil_Libraries.Native_ANSI_Utils.Wrapper_Util
@@ -59,13 +61,21 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Wrapper_Util
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
         internal static int GetItemIndex(IntPtr[] list, IntPtr item)
         {
-            return Array.IndexOf(list, item);
+            for (int i = 0; i < GetListCount(list); i++)
+            {
+                if (GetItem(list, i) == item)
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>
         /// Frees memory of all the IntPtr arrays passed in.
         /// </summary>
         /// <param name="lists">The lists in which should be cleared.</param>
+        /// <returns>the Lists passed in as Lists of IntPtr.Zero</returns>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
         internal static void FreeMemory(params IntPtr[][] lists)
         {
@@ -88,6 +98,7 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Wrapper_Util
         /// Frees memory of the IntPtr array passed in.
         /// </summary>
         /// <param name="listToClear">The list in which should be cleared.</param>
+        /// <returns>The list passed in as a list of IntPtr.Zero</returns>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
         internal static void FreeMemorySingular(IntPtr[] listToClear)
         {
@@ -109,7 +120,13 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Wrapper_Util
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
         internal record restoreParts
         {
+            /// <summary>
+            /// The IntPtr list in which to restore.
+            /// </summary>
             public IntPtr[] listToRestore { get; set; }
+            /// <summary>
+            /// The List in which will be referenced to restore the IntPtr list.
+            /// </summary>
             public IReadOnlyList<String> listToRestoreTo { get; init; }
         }
 
@@ -117,6 +134,7 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Wrapper_Util
         /// Restores memory of all IntPtr arrays passed in.
         /// </summary>
         /// <param name="ListsToRestore">Records of type restoreParts, these contain the ListToRestore and ListToRestoreTo.</param>
+        /// <returns>The lists passed in to their original state defined in the ListsToRestore.</returns>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
         internal static void RestoreMemory(params restoreParts[] ListsToRestore)
         {
@@ -142,6 +160,7 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Wrapper_Util
         /// </summary>
         /// <param name="listToRestore">The IntPtr array you wish to restore the memory of.</param>
         /// <param name="listToRestoreTo">The List in which you wish to reference for restoring the IntPtr array.</param>
+        /// <returns>The List to its original state as passed in.</returns>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
         internal static void RestoreMemorySingular(IntPtr[] listToRestore, IReadOnlyList<String> listToRestoreTo)
         {

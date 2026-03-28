@@ -89,7 +89,7 @@ for %%F in (!TFsN!) do (
         if "%%R"=="win-arm64" (
             echo Publishing NativeAOT: %%F / %%R
             dotnet publish "%NativeProj%" -c "%CONFIG%" -f "%%F" -r "%%R" ^ -o "!OUT!" -p:NoWarn=CS0618 || echo Failed %%F/%%R
-            copy /Y "C:\Users\Thinc\Documents\Cecil Libraries\System Core Utils\ANSI Utils\Native Core\Cecil_ANSI_Utils.h" "!OUT!\Cecil_ANSI_Utils.h"
+            xcopy "C:\Users\Thinc\Documents\Cecil Libraries\System Core Utils\ANSI Utils\\Cecil ANSI Utils Native\Hats" "!OUT!\Hats" /E /I /Y
             copy /Y "C:\Users\Thinc\Documents\Cecil Libraries\System Core Utils\ANSI Utils\LICENSE.md" "!OUT!\LICENSE.md"
             copy /Y "C:\Users\Thinc\Documents\Cecil Libraries\System Core Utils\ANSI Utils\README.md" "!OUT!\README.md"
             echo.
@@ -118,7 +118,7 @@ for %%F in (!TFsN!) do (
         if "%%R"=="win-x64" (
             echo Publishing NativeAOT: %%F / %%R
             dotnet publish "%NativeProj%" -c "%CONFIG%" -f "%%F" -r "%%R" ^ -o "!OUT!" -p:NoWarn=CS0618 || echo Failed %%F/%%R
-            copy /Y "C:\Users\Thinc\Documents\Cecil Libraries\System Core Utils\ANSI Utils\Native Core\Cecil_ANSI_Utils.h" "!OUT!\Cecil_ANSI_Utils.h"
+            xcopy "C:\Users\Thinc\Documents\Cecil Libraries\System Core Utils\ANSI Utils\\Cecil ANSI Utils Native\Hats" "!OUT!\Hats" /E /I /Y
             copy /Y "C:\Users\Thinc\Documents\Cecil Libraries\System Core Utils\ANSI Utils\LICENSE.md" "!OUT!\LICENSE.md"
             copy /Y "C:\Users\Thinc\Documents\Cecil Libraries\System Core Utils\ANSI Utils\README.md" "!OUT!\README.md"
             echo.
