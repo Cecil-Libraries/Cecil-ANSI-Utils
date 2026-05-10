@@ -13,6 +13,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      checks: read
     steps:
       - uses: actions/checkout@v4
         with:
@@ -44,12 +46,12 @@ jobs:
 
       - name: Wait for status checks
         if: steps.cpr.outputs.pull-request-operation == 'created'
-        uses: juliangruber/wait-for-checks-action@v1
+        uses: poseidon/wait-for-status-checks@v0.6.0
         with:
-          github-token: ${{ secrets.STATS }}
-          number: ${{ steps.cpr.outputs.pull-request-number }}
-          interval: 5000
-          timeout: 1800000  # 10 minutes
+          token: ${{ secrets.STATS }}
+          delay: 5s
+          interval: 5s
+          timeout: 1800s
 
       - name: Auto-approve PR
         if: steps.cpr.outputs.pull-request-operation == 'created'
