@@ -7,12 +7,20 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
+  checks: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.STATS }}
+          fetch-depth: 0
+
+      - name: Create profile dir
+        run: mkdir -p profile
 
       - name: Generate pin card
         uses: readme-tools/github-readme-stats-action@v1
@@ -34,17 +42,26 @@ jobs:
           delete-branch: true
           base: main
 
-      - name: Auto-approve PR
+      - name: Wait for status checks
         if: steps.cpr.outputs.pull-request-operation == 'created'
-        uses: juliangruber/auto-approve-action@v1
+        uses: juliangruber/wait-for-checks-action@v1
         with:
           github-token: ${{ secrets.STATS }}
-          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+          number: ${{ steps.cpr.outputs.pull-request-number }}
+          interval: 5000
+          timeout: 1800000  # 10 minutes
 
-      - name: Enable auto-merge
+      - name: Auto-approve PR
         if: steps.cpr.outputs.pull-request-operation == 'created'
-        uses: peter-evans/enable-pull-request-automerge@v3
+        uses: juliangruber/approve-pull-request-action@v2
         with:
-          token: ${{ secrets.STATS }}
-          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
-          merge-method: squash
+          github-token: ${{ secrets.STATS }}
+          number: ${{ steps.cpr.outputs.pull-request-number }}
+
+      - name: Merge Pull Request
+        if: steps.cpr.outputs.pull-request-operation == 'created'
+        uses: juliangruber/merge-pull-request-action@v1
+        with:
+          github-token: ${{ secrets.STATS }}
+          number: ${{ steps.cpr.outputs.pull-request-number }}
+          method: squash
