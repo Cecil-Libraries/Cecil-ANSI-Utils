@@ -92,19 +92,21 @@ jobs:
               core.setOutput('number', pr.number);
             }
 
-      - name: Wait for status checks
+      - name: Wait for Windows Builds
         uses: poseidon/wait-for-status-checks@v0.6.0
         with:
-          token: ${{ secrets.STATS }}
-          delay: 1800s
-          interval: 5s
-          timeout: 1800s
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Regex to match only the "Build Output / Windows..." jobs
+          match_pattern: 'Build Output / Windows.*'
+          # Polling configuration based on your inputs
+          interval: 10s
+          timeout: 3600s
+          delay: 5s
           
-
       - name: Auto-approve PR
         uses: juliangruber/approve-pull-request-action@v2
         with:
-          github-token: ${{ secrets.STATS }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           number: ${{ steps.pr.outputs.number }}
 
       - name: Merge Pull Request
