@@ -1,3 +1,5 @@
+![Pinned](./profile/pin-readme-tools-github-readme-stats.svg)
+
 # Cecil ANSI Utilities
 Copyright 2025 Cecil Libraries Organization and the Founder(s) Chaosyr
 ## FAQ's/Project Intro
