@@ -96,10 +96,10 @@ jobs:
         uses: poseidon/wait-for-status-checks@v0.6.0
         with:
           token: ${{ secrets.STATS }}
-          delay: 5s
+          delay: 1800s
           interval: 5s
           timeout: 1800s
-          pull-request-number: ${{ steps.pr.outputs.number }}
+          
 
       - name: Auto-approve PR
         uses: juliangruber/approve-pull-request-action@v2
