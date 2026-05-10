@@ -3,8 +3,12 @@ name: Build Output
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - 'profile/*.svg'
   pull_request:
     branches: [ main ]
+    paths-ignore:
+      - 'profile/*.svg'
   release:
     types: [ published ]
 
