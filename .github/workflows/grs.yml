@@ -39,13 +39,28 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Create branch and commit
+            - name: Create or update branch and commit
         run: |
-          git checkout -b feature/automated-update
+          git fetch origin
+          
+          # Check if the branch exists on the remote
+          if git ls-remote --exit-code --heads origin feature/automated-update; then
+            # Branch exists: switch to it and sync
+            git checkout feature/automated-update
+            git reset --hard origin/feature/automated-update
+          else
+            # Branch doesn't exist: create it
+            git checkout -b feature/automated-update
+          fi
+
           echo "Last updated: $(date)" > update-log.txt
           git add profile/*.svg update-log.txt
+          
           git commit -m "docs: automated update of log file" || exit 0
-          git push origin HEAD:feature/automated-update
+          
+          # Force push is often safer for automated 'bot' branches to prevent conflicts
+          git push origin feature/automated-update --force
+
 
       - name: Create or update PR
         id: pr
