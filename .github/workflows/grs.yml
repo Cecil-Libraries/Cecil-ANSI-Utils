@@ -39,7 +39,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-            - name: Create or update branch and commit
+      - name: Create or update branch and commit
         run: |
           git fetch origin
           
