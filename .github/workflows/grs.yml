@@ -39,13 +39,28 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Create branch and commit
+      - name: Create or update branch and commit
         run: |
-          git checkout -b feature/automated-update
+          git fetch origin
+          
+          # Check if the branch exists on the remote
+          if git ls-remote --exit-code --heads origin feature/automated-update; then
+            # Branch exists: switch to it and sync
+            git checkout feature/automated-update
+            git reset --hard origin/feature/automated-update
+          else
+            # Branch doesn't exist: create it
+            git checkout -b feature/automated-update
+          fi
+
           echo "Last updated: $(date)" > update-log.txt
           git add profile/*.svg update-log.txt
+          
           git commit -m "docs: automated update of log file" || exit 0
-          git push origin HEAD:feature/automated-update
+          
+          # Force push is often safer for automated 'bot' branches to prevent conflicts
+          git push origin feature/automated-update --force
+
 
       - name: Create or update PR
         id: pr
@@ -93,18 +108,21 @@ jobs:
             }
 
       - name: Wait for status checks
-        uses: poseidon/wait-for-status-checks@v0.6.0
+        id: waitforstatuschecks
+        uses: "WyriHaximus/github-action-wait-for-status@v1.8"
         with:
-          token: ${{ secrets.STATS }}
-          delay: 1800s
-          interval: 5s
-          timeout: 1800s
+          # Ignores this job ('build') to prevent it from waiting for itself
+          ignoreActions: 'build' 
+          checkInterval: 13
+        env:
+          GITHUB_TOKEN: "${{ secrets.STATS }}"
+        # Use standard timeout as this action doesn't have a timeout input
+        timeout-minutes: 60 
           
-
       - name: Auto-approve PR
         uses: juliangruber/approve-pull-request-action@v2
         with:
-          github-token: ${{ secrets.STATS }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           number: ${{ steps.pr.outputs.number }}
 
       - name: Merge Pull Request
