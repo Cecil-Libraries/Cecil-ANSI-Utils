@@ -1,4 +1,4 @@
-﻿#ifndef CECIL_ANSI_H
+#ifndef CECIL_ANSI_H
 #define CECIL_ANSI_H  // NOLINT(clang-diagnostic-unused-macros)
 
 #ifdef __cplusplus
@@ -14,26 +14,26 @@ extern "C" {
     // Ownership; Returned const char* values belong to this library. Do NOT free them directly.
     // Calling FreeMemory() invalidates all previously returned pointers. After calling RestoreMemory(), new valid pointers can be obtained via Get().
     
-    // Summary; Passes the ColorCount variable through AOT.
-    // Returns; The ColorCount Variable.
+    // Summary; Gets the Pointer of ResetColor
     // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
-    int ANSICodeLists_ColorCount();
+    const char* ANSICodeLists_ResetColor();
     
-    // Summary; Clears the memory of all IntPtr arrays.
+    // Summary; Gets the length of ResetColor
     // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
-    void ANSICodeLists_FreeMemoryLists();
+    int ANSICodeLists_ResetColor_Length();
     
-    // Summary; Restores the memory of all IntPtr arrays.
+    // Summary; Frees the memory of ResetColor
     // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
-    void ANSICodeLists_RestoreMemoryLists();
+    void ANSICodeLists_ResetColor_Free();
     
-    // Summary; Clears the memory of all IntPtr's.
+    // Summary; Restores the memory of ResetColor
     // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
-    void ANSICodeLists_FreeMemoryStrings();
+    void ANSICodeLists_ResetColor_Restore();
     
-    // Summary; Restores the memory of all IntPtr's.
+    // Summary; Checks if the memory of ResetColor is valid for usage
+    // Returns; A true if the memory in the string is valid for use, otherwise false.
     // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
-    void ANSICodeLists_RestoreMemoryStrings();
+    bool ANSICodeLists_ResetColor_IsMemoryValid();
     
 #ifdef __cplusplus
 }

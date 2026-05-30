@@ -12,7 +12,7 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Lists.StringWrappers
         /// Defines the Pointer for FramedMode
         /// </summary>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
-        public static IntPtr Pointer = StringUtils.InitializeString(ANSICodeLists.FramedMode);
+        internal static IntPtr Pointer = StringUtils.InitializeString(ANSICodeLists.FramedMode);
         
         /// <summary>
         /// Gets the Pointer of FramedMode

@@ -12,7 +12,7 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Lists.StringWrappers
         /// Defines the Pointer for ResetFramedMode
         /// </summary>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
-        public static IntPtr Pointer = StringUtils.InitializeString(ANSICodeLists.ResetFramedMode);
+        internal static IntPtr Pointer = StringUtils.InitializeString(ANSICodeLists.ResetFramedMode);
         
         /// <summary>
         /// Gets the Pointer of ResetFramedMode

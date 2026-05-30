@@ -13,7 +13,7 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Lists.ListWrappers
         /// The Pointer variant of ANSICodeLists.BoldColorList
         /// </summary>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
-        public static readonly IntPtr[] ColorListPointers = ListUtils.InitializeList(ANSICodeLists.BoldColorList);
+        internal static readonly IntPtr[] ColorListPointers = ListUtils.InitializeList(ANSICodeLists.BoldColorList);
         
         /// <summary>
         /// Gets the length from BoldColorList.
