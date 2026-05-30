@@ -12,7 +12,7 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Lists.StringWrappers
         /// Defines the Pointer for ResetRapidMode
         /// </summary>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
-        public static IntPtr Pointer = StringUtils.InitializeString(ANSICodeLists.ResetRapidMode);
+        internal static IntPtr Pointer = StringUtils.InitializeString(ANSICodeLists.ResetRapidMode);
         
         /// <summary>
         /// Gets the Pointer of ResetRapidMode

@@ -13,7 +13,7 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Lists.ListWrappers
 		/// The Pointer variant of ANSICodeLists.HighIntensityItalicColorList
 		/// </summary>
 		/// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
-		public static readonly IntPtr[] ColorListPointers = ListUtils.InitializeList(ANSICodeLists.HighIntensityItalicColorList);
+		internal static readonly IntPtr[] ColorListPointers = ListUtils.InitializeList(ANSICodeLists.HighIntensityItalicColorList);
 		
 		/// <summary>
 		/// Gets the length from HighIntensityItalicColorList.

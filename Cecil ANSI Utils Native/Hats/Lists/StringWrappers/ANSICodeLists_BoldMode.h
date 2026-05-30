@@ -14,26 +14,26 @@ extern "C" {
     // Ownership; Returned const char* values belong to this library. Do NOT free them directly.
     // Calling FreeMemory() invalidates all previously returned pointers. After calling RestoreMemory(), new valid pointers can be obtained via Get().
     
-    // Summary; Passes the ColorCount variable through AOT.
-    // Returns; The ColorCount Variable.
+    // Summary; Gets the Pointer of BoldMode
     // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
-    int ANSICodeLists_ColorCount();
+    const char* ANSICodeLists_BoldMode();
     
-    // Summary; Clears the memory of all IntPtr arrays.
+    // Summary; Gets the length of BoldMode
     // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
-    void ANSICodeLists_FreeMemoryLists();
+    int ANSICodeLists_BoldMode_Length();
     
-    // Summary; Restores the memory of all IntPtr arrays.
+    // Summary; Frees the memory of BoldMode
     // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
-    void ANSICodeLists_RestoreMemoryLists();
+    void ANSICodeLists_BoldMode_Free();
     
-    // Summary; Clears the memory of all IntPtr's.
+    // Summary; Restores the memory of BoldMode
     // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
-    void ANSICodeLists_FreeMemoryStrings();
+    void ANSICodeLists_BoldMode_Restore();
     
-    // Summary; Restores the memory of all IntPtr's.
+    // Summary; Checks if the memory of BoldMode is valid for usage
+    // Returns; A true if the memory in the string is valid for use, otherwise false.
     // Remarks; This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.
-    void ANSICodeLists_RestoreMemoryStrings();
+    bool ANSICodeLists_BoldMode_IsMemoryValid();
     
 #ifdef __cplusplus
 }

@@ -13,7 +13,7 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Lists.ListWrappers
         /// The Pointer variant of ANSICodeLists.StrikethroughColorList
         /// </summary>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
-        public static readonly IntPtr[] ColorListPointers = ListUtils.InitializeList(ANSICodeLists.StrikethroughColorList);
+        internal static readonly IntPtr[] ColorListPointers = ListUtils.InitializeList(ANSICodeLists.StrikethroughColorList);
         
         /// <summary>
         /// Gets the length from StrikethroughColorList.

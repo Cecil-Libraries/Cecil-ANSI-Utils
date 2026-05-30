@@ -12,7 +12,7 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Lists.StringWrappers
         /// Defines the Pointer for ResetBackground
         /// </summary>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
-        public static IntPtr Pointer = StringUtils.InitializeString(ANSICodeLists.ResetBackground);
+        internal static IntPtr Pointer = StringUtils.InitializeString(ANSICodeLists.ResetBackground);
         
         /// <summary>
         /// Gets the Pointer of ResetBackground

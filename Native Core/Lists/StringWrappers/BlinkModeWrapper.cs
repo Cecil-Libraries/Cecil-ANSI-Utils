@@ -12,7 +12,7 @@ namespace Cecil_Libraries.Native_ANSI_Utils.Lists.StringWrappers
         /// Defines the Pointer for BlinkMode
         /// </summary>
         /// <remarks>This code is provided by Creator/Chaosyr/SaxbyMod/The Stoat Lord.</remarks>
-        public static IntPtr Pointer = StringUtils.InitializeString(ANSICodeLists.BlinkMode);
+        internal static IntPtr Pointer = StringUtils.InitializeString(ANSICodeLists.BlinkMode);
         
         /// <summary>
         /// Gets the Pointer of BlinkMode
